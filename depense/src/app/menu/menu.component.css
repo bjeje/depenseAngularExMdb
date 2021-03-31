@@ -1,0 +1,23 @@
+.navbar__top {
+  width: 100%;
+  height: 4em;
+  background: #07003B;
+  display: flex;
+}
+
+.top__link {
+  display: flex;
+  margin: 0 25% 0 auto;
+}
+
+.navbar--link {
+  text-decoration: none;
+  padding-left: 2em;
+  color: #FFF;
+}
+
+.icon--menu {
+  justify-content: flex-end;
+  margin: 0.5em 4% 0 0;
+  color: #FFF;
+}
