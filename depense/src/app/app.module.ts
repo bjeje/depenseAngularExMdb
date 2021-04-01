@@ -14,13 +14,15 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatOptionModule} from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     FooterComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    LoginComponent
   ],
   imports: [
     MatInputModule,
