@@ -1,1 +1,66 @@
-<p>register-form works!</p>
+<div class="register">
+  <div class="registerLink">
+    <a class="" href="">Déjà inscrit?</a>
+  </div>
+  <form class="form__register">
+    <p class="box__input_register">
+      <mat-form-field class="register__input" appearance="outline">
+        <mat-label>Login</mat-label>
+        <input class="input__register" type="text" matInput placeholder="">
+      </mat-form-field>
+    </p>
+    <p class="box__input_register">
+      <mat-form-field class="register__input" appearance="outline">
+        <mat-label>Mot de passe</mat-label>
+        <input class="input__register" type="password" matInput placeholder="">
+      </mat-form-field>
+    </p>
+    <p class="box__input_register">
+      <mat-form-field class="register__input" appearance="outline">
+        <mat-label>Nom</mat-label>
+        <input class="input__register" type="password" matInput placeholder="">
+      </mat-form-field>
+    </p>
+    <p class="box__input_register">
+      <mat-form-field class="register__input" appearance="outline">
+        <mat-label>Prénom</mat-label>
+        <input class="input__register" type="password" matInput placeholder="">
+      </mat-form-field>
+    </p>
+    <!--<mat-form-field class="register__input" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input class="input__register" type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>-->
+    <p class="box__input_register">
+      <mat-form-field class="register__input" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input class="input__register" type="email" matInput placeholder="">
+      </mat-form-field>
+    </p>
+    <p class="box__input_register">
+      <mat-form-field class="register__input" appearance="outline">
+        <mat-label>Ville</mat-label>
+        <input class="input__register" type="text" matInput placeholder="">
+      </mat-form-field>
+    </p>
+    <p class="box__input_register">
+      <mat-form-field class="register__input" appearance="outline">
+        <mat-label>Code postal</mat-label>
+        <input class="input__register" type="text" matInput placeholder="">
+      </mat-form-field>
+    </p>
+    <p class="box__input_register">
+      <mat-form-field class="register__input" appearance="outline">
+        <mat-label>Date de naissance</mat-label>
+        <input class="input__register" type="date" matInput placeholder="">
+      </mat-form-field>
+    </p>
+  </form>
+</div>
