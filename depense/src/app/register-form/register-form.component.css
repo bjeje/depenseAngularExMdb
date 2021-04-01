@@ -1,0 +1,47 @@
+a {
+  text-decoration: none;
+}
+
+.register {
+  min-width: 400px;
+  background: #FFFFFF;
+  margin: 2em auto 2em auto;
+  width: 40%;
+  height: auto;
+  border-radius: 1em;
+}
+
+.registerLink {
+  margin-left: 75%;
+  padding: 1em;
+}
+
+/*----------- FORM ----------*/
+
+.example-form {
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.form__register {
+  margin: 0 15% 0 15%;
+  width: 100%;
+  height: auto;
+  padding-bottom: 1.8em;
+}
+
+.register__input {
+  width: 70%;
+  border-top: 0.2em solid transparent;
+}
+
+.box__input_register {
+  height: 3.7em;
+}
+
+.mat-form-field {
+  line-height: 1em;
+}
