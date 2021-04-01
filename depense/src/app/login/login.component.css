@@ -11,29 +11,41 @@ a {
   border-radius: 1em;
 }
 
-.registerLink {
+.loginLink {
   margin-left: 75%;
-  padding: 1em;
+  padding: 1em 1em 3em 1em;
 }
 
 /*----------- FORM ----------*/
 
-.form__register {
+.form__login {
   margin: 0 15% 0 15%;
   width: 100%;
   height: auto;
-  padding-bottom: 1.8em;
+  padding-bottom: 3em;
 }
 
-.register__input {
+.login__input {
   width: 70%;
   border-top: 0.2em solid transparent;
 }
 
-.box__input_register {
-  height: 3.7em;
+.box__input_login {
+  height: 6em;
 }
 
 .mat-form-field {
   line-height: 1em;
+}
+
+.form__submit {
+  margin: 0 auto 0 auto;
+}
+
+.submit__btn {
+  height: 3em;
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  border-radius: 1em;
+  outline: none;
+  background: #05F280;
 }
