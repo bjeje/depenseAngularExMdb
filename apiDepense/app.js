@@ -8,7 +8,6 @@ const cors = require('cors');
 var logger = require('morgan');
 
 var depenseRouter = require('./routes/depense.routes');
-console.log("rentré");
 
 var app = express();
 app.use(logger('dev'));

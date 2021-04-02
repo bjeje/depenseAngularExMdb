@@ -1,8 +1,8 @@
-const Tests = require("../models/depenseModel");
+const Users = require("../models/depenseModel");
 
 exports.getDepense = async function () {
   try {
-    return Tests.find();
+    return Users.find();
   } catch (e) {
     throw Error(e)
   }

@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const DepensesSchema  = new mongoose.Schema({
-  user: {
+  name: {
     type: String,
-    unique: true
+    unique: true,
   }
 })
 
