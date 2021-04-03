@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "6061d855b1c9160b6808697f"
+  },
+  "category": "spentFixe",
+  "sub_category": "loyer",
+  "value": 450,
+  "date": "2012-04-23T18:25:43.511Z"
+},{
+  "_id": {
+    "$oid": "6061d85ab1c9160b68086980"
+  },
+  "category": "spentFixe",
+  "sub_category": "Impots",
+  "value": 200,
+  "date": "2012-04-23T18:25:43.511Z"
+},{
+  "_id": {
+    "$oid": "6061d85eb1c9160b68086981"
+  },
+  "category": "spentVariable",
+  "sub_category": "Course",
+  "value": 100,
+  "date": "2012-04-23T18:25:43.511Z"
+},{
+  "_id": {
+    "$oid": "6061d862b1c9160b68086982"
+  },
+  "category": "spentVariable",
+  "sub_category": "Vetement",
+  "value": 80,
+  "date": "2012-04-23T18:25:43.511Z"
+},{
+  "_id": {
+    "$oid": "6061d866b1c9160b68086983"
+  },
+  "category": "spentVariable",
+  "sub_category": "cigarette",
+  "value": 100,
+  "date": "2012-04-23T18:25:43.511Z"
+},{
+  "_id": {
+    "$oid": "6061d866b1c9160b68086984"
+  },
+  "category": "spentVariable",
+  "sub_category": "medical",
+  "value": 20,
+  "date": "2012-04-23T18:25:43.511Z"
+}]
