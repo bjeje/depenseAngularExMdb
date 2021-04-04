@@ -16,6 +16,7 @@ module.exports = {
         DUPLICATE_EMAIL: 'User already exist with given email',
         USER_NOT_FOUND: 'User not found',
         INVALID_PASSWORD: 'Incorrect Password',
+        USER_FETCHED: 'User Fetched Successfully',
         USER_DELETED: 'User Deleted Successfully'
     },
     requestValidationMessage: {
