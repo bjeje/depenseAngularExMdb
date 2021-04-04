@@ -1,6 +1,6 @@
 const Spents = require("../models/spentModel");
 
-exports.getSpent = async function () {
+module.exports.getSpent = async function () {
   try {
     return Spents.find();
   } catch (e) {

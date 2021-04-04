@@ -1,16 +1,14 @@
-const Spents = require("../models/spentModel");
+const Spent = require("../models/spentModel");
+const { formatMongoData } = require('../helper/dbHelper');
 
-exports.createSpent = async function (res) {
+module.exports.createSpent = async (req) => {
     try {
-        Spents.save()
-        .then(data => {
-            res.send(data);
-        }).catch(err => {
-            res.status(500).send({
-                message: err.message || "Some error occurred while creating the Spend."
-            });
-        });
-    } catch (e) {
-        throw Error(e)
+        let spent = new Spent({...req});
+        let result = await spent.save();
+        return result.toObject();
+
+    } catch (error) {
+        console.log('Something went wrong: Service: createSpent', error);
+        throw new Error(error);
     }
 }

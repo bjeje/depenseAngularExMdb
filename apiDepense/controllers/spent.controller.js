@@ -1,6 +1,6 @@
 const SpentService = require('../services/spent.service');
 
-exports.getSpent = async function (req, res) {
+module.exports.getSpent = async function (req, res) {
   try {
     let spent = await SpentService.getSpent()
     res.status(200)

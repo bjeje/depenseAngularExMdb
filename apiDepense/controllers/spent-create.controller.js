@@ -1,20 +1,18 @@
-const SpentCreateService = require('../services/spent-create.service');
+const spentCreateService = require('../services/spent-create.service');
+const constants = require('../constants');
 
-exports.create = async function (req, res) {
-
-    if(!req.body.category) {
-        return res.status(400).send({
-            message: "Note content can not be empty"
-        });
+module.exports.createSpent = async (req, res) => {
+    let response = { ...constants.defaultServerResponse };
+    try {
+        const responseFromService = await spentCreateService.createSpent(req.body);
+        response.status = 200;
+        response.message = constants.spentMessage.SPENT_CREATED;
+        response.body = responseFromService;
+    } catch(error) {
+        console.log('Something went wrong: Controller: createSpent', error);
+        response.status = 400;
+        response.message = error.message;
+        response.body = {};
     }
-
-    const spent = {
-        category: req.body.category,
-        sub_category: req.body.sub_category,
-        value: req.body.value,
-        date: req.body.date,
-    };
-
-    return spent;
-
+    return res.status(response.status).send(response);
 }
