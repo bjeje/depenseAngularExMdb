@@ -7,12 +7,16 @@ const cors = require('cors');
 
 var logger = require('morgan');
 
-var spentRouter = require('./routes/spent.routes');
 
-var app = express();
+
+const app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+const spentRouter = require('./routes/spent.routes');
+const userRouter = require('./routes/user.routes');
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use('/', spentRouter);
+app.use('/', userRouter);
 
 app.set('view engine', 'pug');
 
