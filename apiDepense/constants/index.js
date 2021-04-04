@@ -17,6 +17,7 @@ module.exports = {
         USER_NOT_FOUND: 'User not found',
         INVALID_PASSWORD: 'Incorrect Password',
         USER_FETCHED: 'User Fetched Successfully',
+        USER_UPDATED: 'User Updated Successfully',
         USER_DELETED: 'User Deleted Successfully'
     },
     requestValidationMessage: {
