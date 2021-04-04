@@ -15,7 +15,8 @@ module.exports = {
         LOGIN_SUCCESS: 'Login Success',
         DUPLICATE_EMAIL: 'User already exist with given email',
         USER_NOT_FOUND: 'User not found',
-        INVALID_PASSWORD: 'Incorrect Password'
+        INVALID_PASSWORD: 'Incorrect Password',
+        USER_DELETED: 'User Deleted Successfully'
     },
     requestValidationMessage: {
         BAD_REQUEST: 'Invalid fields',

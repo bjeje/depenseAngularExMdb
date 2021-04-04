@@ -5,7 +5,7 @@ const userController = require('../controllers/user.controller')
 //const userOneController = require('../controllers/user-getOne.controller')
 const userCreateController = require('../controllers/user-create.controller')
 //const userUpdateController = require('../controllers/user-update.controller')
-//const userDeleteController = require('../controllers/user-delete.controller')
+const userDeleteController = require('../controllers/user-delete.controller')
 
 
 //router.get('/signup', userController.getUser);
@@ -13,6 +13,6 @@ router.get('/', userController.getUser);
 //router.get('/user/:id', userOneController.getSpentById);
 router.post('/signup', userCreateController.createUser);
 //router.put('/user/:id', userUpdateController.updateSpent);
-//router.delete('/user/:id', userDeleteController.deleteSpent);
+router.delete('/user/:id', userDeleteController.deleteUser);
 
 module.exports = router;
