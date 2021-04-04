@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "6061d855b1c9160b6808797f"
+  },
+  "login": "toto12",
+  "password": "toto1234",
+  "name": "delanoe",
+  "firstname":"toto",
+  "email": "mail@test.com",
+  "city": "nantes",
+  "postalCode": 44100,
+  "birthdate": "2012-04-23T18:25:43.511Z"
+},{
+  "_id": {
+    "$oid": "6061d85ab1c9160b68087980"
+  },
+  "login": "tata12",
+  "password": "tata1234",
+  "name": "delanoe",
+  "firstname":"tata",
+  "email": "mail1@test.com",
+  "city": "nantes",
+  "postalCode": 44100,
+  "birthdate": "2012-04-23T18:25:43.511Z"
+}]

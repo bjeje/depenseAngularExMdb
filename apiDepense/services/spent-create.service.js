@@ -1,5 +1,4 @@
 const Spent = require("../models/spentModel");
-const { formatMongoData } = require('../helper/dbHelper');
 
 module.exports.createSpent = async (req) => {
     try {
