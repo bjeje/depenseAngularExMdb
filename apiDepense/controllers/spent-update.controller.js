@@ -12,7 +12,7 @@ module.exports.updateSpent = async (req, res) => {
         response.message = constants.spentMessage.SPENT_UPDATED;
         response.body = responseFromService;
     } catch(error) {
-        console.log('Something went wrong: Controller: createSpent', error);
+        console.log('Something went wrong: Controller: updateSpent', error);
         response.status = 400;
         response.message = error.message;
         response.body = {};
