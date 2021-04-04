@@ -7,20 +7,19 @@ const cors = require('cors');
 
 var logger = require('morgan');
 
-var depenseRouter = require('./routes/depense.routes');
-console.log("rentré");
+var spentRouter = require('./routes/spent.routes');
 
 var app = express();
 app.use(logger('dev'));
 app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors());
 
-app.use('/', depenseRouter);
+app.use('/', spentRouter);
 
 app.set('view engine', 'pug');
 
@@ -44,7 +43,7 @@ app.use(function(err, req, res, next) {
 var mongoose = require('mongoose');
 
 //Set up default mongoose connection
-var mongoDB = 'mongodb://127.0.0.1/depense';
+var mongoDB = 'mongodb://127.0.0.1/spent';
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //Get the default connection
