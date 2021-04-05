@@ -10,6 +10,13 @@ module.exports = {
         SPENT_DELETED: 'Spent Deleted Successfully',
         SPENT_NOT_FOUND: 'Spent Not Found'
     },
+    incomeMessage: {
+        INCOME_CREATED: 'Income Created Successfully',
+        INCOME_FETCHED: 'Income Fetched Successfully',
+        INCOME_UPDATED: 'Income Updated Successfully',
+        INCOME_DELETED: 'Income Deleted Successfully',
+        INCOME_NOT_FOUND: 'Income Not Found'
+    },
     userMessage: {
         SIGNUP_SUCCESS: 'Signup Success',
         LOGIN_SUCCESS: 'Login Success',
