@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatInputModule} from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from './helpers/error.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,8 @@ import {MatOptionModule} from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { UserComponent } from './components/user/user.component';
     FooterComponent,
     RegisterFormComponent,
     LoginComponent,
-    UserComponent
+    UserComponent,
+    LoginPageComponent,
+    SignupPageComponent
   ],
   imports: [
     HttpClientModule,
@@ -40,7 +45,9 @@ import { UserComponent } from './components/user/user.component';
     MatFormFieldModule,
     MatOptionModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
