@@ -1,0 +1,13 @@
+[{
+    "_id": {
+        "$oid": "7061d855b1c9160b6808697f"
+    },
+    "category": "Salaire",
+    "value": 1500
+},{
+    "_id": {
+        "$oid": "7061d85ab1c9160b68086980"
+    },
+    "category": "Vente",
+    "value": 500
+}]

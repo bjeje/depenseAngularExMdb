@@ -14,7 +14,5 @@ router.post('/spent', spentCreateController.createSpent);
 router.put('/spent/:id', spentUpdateController.updateSpent);
 router.delete('/spent/:id', spentDeleteController.deleteSpent);
 
-
-
 /*router.post('/login', spentController.getSpent);*/
 module.exports = router;

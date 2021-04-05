@@ -1,13 +1,11 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-var logger = require('morgan');
-
-
+const logger = require('morgan');
 
 const app = express();
 app.use(logger('dev'));
@@ -16,6 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 
 const spentRouter = require('./routes/spent.routes');
 const userRouter = require('./routes/user.routes');
+const incomeRouter = require('./routes/income.routes');
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,6 +24,7 @@ app.use(cors());
 
 app.use('/', spentRouter);
 app.use('/', userRouter);
+app.use('/', incomeRouter);
 
 app.set('view engine', 'pug');
 
@@ -45,14 +45,14 @@ app.use(function(err, req, res, next) {
 });
 
 //Import the mongoose module
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 //Set up default mongoose connection
-var mongoDB = 'mongodb://127.0.0.1/spent';
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+const mongoDB = 'mongodb://127.0.0.1/spent';
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 //Get the default connection
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
