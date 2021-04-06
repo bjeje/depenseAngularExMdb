@@ -4,6 +4,7 @@ const router = express.Router();
 const incomeController = require('../controllers/income.controller')
 
 router.get('/income', incomeController.getIncome);
+router.get('/income/nine', incomeController.getNineIncome);
 router.get('/income/:id', incomeController.getIncomeById);
 router.post('/income', incomeController.createIncome);
 router.put('/income/:id', incomeController.updateIncome);

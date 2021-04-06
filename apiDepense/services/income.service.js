@@ -69,3 +69,16 @@ module.exports.updateIncome = async ({ id, updateInfo }) => {
         throw new Error(error);
     }
 }
+
+module.exports.getNineIncome = async () => {
+    try {
+        let spent = await Income.find().sort({_id: -1}).limit(9);
+        if (!spent) {
+            throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
+        }
+        return spent;
+    } catch (error) {
+        console.log('Something went wrong: Service: getNineIncome', error);
+        throw new Error(error);
+    }
+}

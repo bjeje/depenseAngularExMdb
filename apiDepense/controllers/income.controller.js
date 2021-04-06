@@ -76,3 +76,17 @@ module.exports.updateIncome = async (req, res) => {
     }
     return res.status(response.status).send(response);
 }
+
+module.exports.getNineIncome = async (req, res) => {
+    let response = { ...constants.defaultServerResponse };
+    try {
+        const responseFromService = await incomeService.getNineIncome(req.params);
+        response.status = 200;
+        response.message = constants.incomeMessage.INCOME_FETCHED;
+        response.body = responseFromService;
+    } catch (error) {
+        console.log('Something went wrong: Controller: getNineIncome', error);
+        response.message = error.message;
+    }
+    return res.status(response.status).send(response);
+}
