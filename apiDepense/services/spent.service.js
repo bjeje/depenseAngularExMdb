@@ -85,13 +85,46 @@ module.exports.getNineSpentVariable = async () => {
 
 module.exports.getNineSpentFixed = async () => {
   try {
-    let spent = await Spent.find({"category": "spentFixe" }).sort({_id: -1}).limit(9);
+    let spent = await Spent.find({"category": "spentFixed" }).sort({_id: -1}).limit(9);
     if (!spent) {
       throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
     }
     return spent;
   } catch (error) {
     console.log('Something went wrong: Service: getNineSpent', error);
+    throw new Error(error);
+  }
+}
+
+module.exports.getSpentFixedByDate = async ({ dateBegin, dateEnd }) => {
+  try {
+    let spent = await Spent.find({category: "spentFixed",createdAt : {
+      $gte: new Date(dateBegin),
+      $lt: new Date(dateEnd)
+    } });
+    if (!spent) {
+      throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
+    }
+    return spent;
+  } catch (error) {
+    console.log('Something went wrong: Service: getSpentFixedByDate', error);
+    throw new Error(error);
+  }
+}
+
+module.exports.getSpentVariableByDate = async ({ dateBegin, dateEnd }) => {
+  try {
+
+    let spent = await Spent.find({category: "spentVariable",createdAt : {
+        $gte: new Date(dateBegin),
+        $lt: new Date(dateEnd)
+      } });
+    if (!spent) {
+      throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
+    }
+    return spent;
+  } catch (error) {
+    console.log('Something went wrong: Service: getSpentVariableByDate', error);
     throw new Error(error);
   }
 }
