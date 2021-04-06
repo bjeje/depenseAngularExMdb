@@ -69,3 +69,29 @@ module.exports.updateSpent = async ({ id, updateInfo }) => {
     throw new Error(error);
   }
 }
+
+module.exports.getNineSpentVariable = async () => {
+  try {
+    let spent = await Spent.find({"category": "spendVariable" }).sort({_id: -1}).limit(9);
+    if (!spent) {
+      throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
+    }
+    return spent;
+  } catch (error) {
+    console.log('Something went wrong: Service: getNineSpent', error);
+    throw new Error(error);
+  }
+}
+
+module.exports.getNineSpentFixed = async () => {
+  try {
+    let spent = await Spent.find({"category": "spentFixe" }).sort({_id: -1}).limit(9);
+    if (!spent) {
+      throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
+    }
+    return spent;
+  } catch (error) {
+    console.log('Something went wrong: Service: getNineSpent', error);
+    throw new Error(error);
+  }
+}
