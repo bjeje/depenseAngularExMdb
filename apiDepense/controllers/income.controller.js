@@ -91,15 +91,29 @@ module.exports.getNineIncome = async (req, res) => {
     return res.status(response.status).send(response);
 }
 
-module.exports.getIncomeByDateAndSubCategory = async (req, res) => {
+module.exports.getIncomeByDate = async (req, res) => {
     let response = { ...constants.defaultServerResponse };
     try {
-        const responseFromService = await incomeService.getIncomeByDateAndSubCategory(req.params);
+        const responseFromService = await incomeService.getIncomeByDate(req.params);
         response.status = 200;
-        response.message = constants.spentMessage.SPENT_FETCHED;
+        response.message = constants.incomeMessage.INCOME_FETCHED;
         response.body = responseFromService;
     } catch (error) {
-        console.log('Something went wrong: Controller: getIncomeByDateAndSubCategory', error);
+        console.log('Something went wrong: Controller: getIncomeByDate', error);
+        response.message = error.message;
+    }
+    return res.status(response.status).send(response);
+}
+
+module.exports.getIncomeByDateAndCategory = async (req, res) => {
+    let response = { ...constants.defaultServerResponse };
+    try {
+        const responseFromService = await incomeService.getIncomeByDateAndCategory(req.params);
+        response.status = 200;
+        response.message = constants.spentMessage.INCOME_FETCHED;
+        response.body = responseFromService;
+    } catch (error) {
+        console.log('Something went wrong: Controller: getIncomeByDateAndCategory', error);
         response.message = error.message;
     }
     return res.status(response.status).send(response);

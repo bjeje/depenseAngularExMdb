@@ -5,7 +5,8 @@ const Controller = require('../controllers/income.controller')
 
 router.get('/', Controller.getIncome);
 router.get('/nine', Controller.getNineIncome);
-router.get('/allByDateCat/:dateBegin/:dateEnd', Controller.getIncomeByDateAndSubCategory);
+router.get('/allByDate/:dateBegin/:dateEnd', Controller.getIncomeByDate);
+router.get('/allByDateCat/:dateBegin/:dateEnd', Controller.getIncomeByDateAndCategory);
 router.get('/:id', Controller.getIncomeById);
 router.post('/', Controller.createIncome);
 router.put('/:id', Controller.updateIncome);

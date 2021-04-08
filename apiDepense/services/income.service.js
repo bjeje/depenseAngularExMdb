@@ -83,7 +83,27 @@ module.exports.getNineIncome = async () => {
     }
 }
 
-module.exports.getIncomeByDateAndSubCategory = async ({ dateBegin, dateEnd }) => {
+module.exports.getIncomeByDate = async ({ dateBegin, dateEnd }) => {
+    try {
+        let totalIncome = 0;
+        let income = await Income.find({createdAt : {
+                $gte: new Date(dateBegin),
+                $lt: new Date(dateEnd)
+            } });
+        if (!income) {
+            throw new Error(constants.incomeMessage.INCOME_NOT_FOUND);
+        }
+        income.forEach(income =>
+            totalIncome += income.value);
+        income.push({totalIncome : totalIncome});
+        return income;
+    } catch (error) {
+        console.log('Something went wrong: Service: getIncomeByDate', error);
+        throw new Error(error);
+    }
+}
+
+module.exports.getIncomeByDateAndCategory = async ({ dateBegin, dateEnd }) => {
 
     const pipeline = [
         {"$match": {"createdAt": {"$gte": new Date(dateBegin), "$lte": new Date(dateEnd)}}},
@@ -115,7 +135,7 @@ module.exports.getIncomeByDateAndSubCategory = async ({ dateBegin, dateEnd }) =>
         return income;
 
     } catch (error) {
-        console.log('Something went wrong: Service: getSpentVariableByDate', error);
+        console.log('Something went wrong: Service: getIncomeByDateAndCategory', error);
         throw new Error(error);
     }
 };
