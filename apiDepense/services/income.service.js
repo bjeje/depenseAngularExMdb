@@ -82,3 +82,40 @@ module.exports.getNineIncome = async () => {
         throw new Error(error);
     }
 }
+
+module.exports.getIncomeByDateAndSubCategory = async ({ dateBegin, dateEnd }) => {
+
+    const pipeline = [
+        {"$match": {"createdAt": {"$gte": new Date(dateBegin), "$lte": new Date(dateEnd)}}},
+        {
+            "$group": {
+                "_id": "$category",
+                //"id": {"$push" :"$_id"},
+                "count": {"$sum": 1},
+                "amount": {"$sum": "$value"},
+            },
+        }
+    ];
+
+    try {
+
+        let totalIncome = 0;
+        let income = await
+            Income.aggregate(pipeline, function (err, results) {
+
+                if(err) throw err;
+                results.forEach(function(income) {
+                    totalIncome += income.amount;
+                });
+
+                return results;
+            });
+
+        income.push({total: totalIncome});
+        return income;
+
+    } catch (error) {
+        console.log('Something went wrong: Service: getSpentVariableByDate', error);
+        throw new Error(error);
+    }
+};

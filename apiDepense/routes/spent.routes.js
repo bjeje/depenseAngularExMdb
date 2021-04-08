@@ -6,7 +6,7 @@ const spentController = require('../controllers/spent.controller')
 router.get('/', spentController.getSpent);
 router.get('/FixedByDate/:dateBegin/:dateEnd', spentController.getSpentFixedByDate);
 router.get('/VariableByDate/:dateBegin/:dateEnd', spentController.getSpentVariableByDate);
-router.get('/VariableByDateCat/:dateBegin/:dateEnd', spentController.getSpentByDateAndSubCategory);
+router.get('/allByDateCat/:dateBegin/:dateEnd', spentController.getSpentByDateAndSubCategory);
 router.get('/nineFixed', spentController.getNineSpentFixed);
 router.get('/nineVariable', spentController.getNineSpentVariable);
 router.get('/:id', spentController.getSpentById);
