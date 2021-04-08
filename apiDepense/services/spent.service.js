@@ -119,7 +119,7 @@ module.exports.getSpentFixedByDate = async ({ dateBegin, dateEnd }) => {
 module.exports.getSpentVariableByDate = async ({ dateBegin, dateEnd }) => {
   try {
     let totalSpentVariable = 0;
-    let spent = await Spent.find({category: "spentVariable",createdAt : {
+    let spent = await Spent.distinct("sub_category").find({category: "spentVariable",createdAt : {
         $gte: new Date(dateBegin),
         $lt: new Date(dateEnd)
       } });
@@ -129,10 +129,57 @@ module.exports.getSpentVariableByDate = async ({ dateBegin, dateEnd }) => {
 
     spent.forEach(spent =>
     totalSpentVariable += spent.value);
+
     spent.push({totalSpentVariable : totalSpentVariable});
     return spent;
+
   } catch (error) {
     console.log('Something went wrong: Service: getSpentVariableByDate', error);
     throw new Error(error);
   }
 }
+
+module.exports.getSpentByDateAndSubCategory = async ({ dateBegin, dateEnd }) => {
+
+  const pipeline = [
+    {"$match": {"createdAt": {"$gte": new Date(dateBegin), "$lte": new Date(dateEnd)}}},
+    {
+      "$group": {
+        "_id": "$sub_category",
+        //"id": {"$push" :"$_id"},
+        "category": {"$first": "$category"},
+        "count": {"$sum": 1},
+        "amount": {"$sum": "$value"},
+      },
+    }
+  ];
+
+  try {
+
+    let totalSpentVariable = 0;
+    let totalSpentFixed = 0;
+    let spent = await
+      Spent.aggregate(pipeline, function (err, results) {
+
+        if(err) throw err;
+        results.forEach(function(spent) {
+          if(spent.category === "spentFixed") {
+            totalSpentFixed += spent.amount;
+          }
+          if(spent.category === "spentVariable") {
+            totalSpentVariable += spent.amount;
+          }
+        });
+
+        return results;
+      });
+    spent.push({totalSpentFixed: totalSpentFixed});
+    spent.push({totalSpentVariable: totalSpentVariable});
+    spent.push({total: totalSpentFixed + totalSpentVariable});
+    return spent;
+
+  } catch (error) {
+    console.log('Something went wrong: Service: getSpentVariableByDate', error);
+    throw new Error(error);
+  }
+};

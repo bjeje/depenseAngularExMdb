@@ -22,9 +22,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors());
 
-app.use('/', spentRouter);
-app.use('/', userRouter);
-app.use('/', incomeRouter);
+app.use('/spent', spentRouter);
+app.use('/user', userRouter);
+app.use('/income', incomeRouter);
 
 app.set('view engine', 'pug');
 
