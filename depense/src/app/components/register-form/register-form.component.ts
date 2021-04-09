@@ -10,17 +10,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-export class InputErrorStateMatcherExample {
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-
-  matcher = new MyErrorStateMatcher();
-}
-
-
-
 @Component({
   selector: 'app-register-form',
   templateUrl: './register-form.component.html',

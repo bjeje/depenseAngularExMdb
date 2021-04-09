@@ -1,4 +1,5 @@
 const incomeService = require('../services/income.service');
+const constants = require('../constants');
 
 module.exports.getIncome = async function (req, res) {
     try {
@@ -9,4 +10,118 @@ module.exports.getIncome = async function (req, res) {
         res.status(400)
         res.send();
     }
+}
+
+module.exports.createIncome = async (req, res) => {
+    let response = { ...constants.defaultServerResponse };
+    try {
+        const responseFromService = await incomeService.createIncome(req.body);
+        response.status = 200;
+        response.message = constants.incomeMessage.INCOME_CREATED;
+        response.body = responseFromService;
+    } catch(error) {
+        console.log('Something went wrong: Controller: createIncome', error);
+        response.status = 400;
+        response.message = error.message;
+        response.body = {};
+    }
+    return res.status(response.status).send(response);
+}
+
+module.exports.deleteIncome = async (req, res) => {
+    let response = { ...constants.defaultServerResponse };
+    try {
+        const responseFromService = await incomeService.deleteIncome(req.params);
+        response.status = 200;
+        response.message = constants.incomeMessage.INCOME_DELETED;
+        response.body = responseFromService;
+    } catch(error) {
+        console.log('Something went wrong: Controller: deleteIncome', error);
+        response.status = 400;
+        response.message = error.message;
+        response.body = {};
+    }
+    return res.status(response.status).send(response);
+}
+
+module.exports.getIncomeById = async (req, res) => {
+    let response = { ...constants.defaultServerResponse };
+    try {
+        const responseFromService = await incomeService.getIncomeById(req.params);
+        response.status = 200;
+        response.message = constants.incomeMessage.INCOME_FETCHED;
+        response.body = responseFromService;
+    } catch (error) {
+        console.log('Something went wrong: Controller: getOneIncome', error);
+        response.message = error.message;
+    }
+    return res.status(response.status).send(response);
+}
+
+module.exports.updateIncome = async (req, res) => {
+    let response = { ...constants.defaultServerResponse };
+    try {
+        const responseFromService = await incomeService.updateIncome({
+            id: req.params.id,
+            updateInfo: req.body
+        });
+        response.status = 200;
+        response.message = constants.incomeMessage.INCOME_UPDATED;
+        response.body = responseFromService;
+    } catch(error) {
+        console.log('Something went wrong: Controller: updateIncome', error);
+        response.status = 400;
+        response.message = error.message;
+        response.body = {};
+    }
+    return res.status(response.status).send(response);
+}
+
+module.exports.getNineIncome = async (req, res) => {
+    let response = { ...constants.defaultServerResponse };
+    try {
+        const responseFromService = await incomeService.getNineIncome(req.params);
+        response.status = 200;
+        response.message = constants.incomeMessage.INCOME_FETCHED;
+        response.body = responseFromService;
+    } catch (error) {
+        console.log('Something went wrong: Controller: getNineIncome', error);
+        response.message = error.message;
+    }
+    return res.status(response.status).send(response);
+}
+
+module.exports.getIncomeByDate = async (req, res) => {
+    let response = { ...constants.defaultServerResponse };
+    try {
+        const responseFromService = await incomeService.getIncomeByDate(req.params);
+        response.status = 200;
+        response.message = constants.incomeMessage.INCOME_FETCHED;
+        response.body = responseFromService;
+    } catch (error) {
+        console.log('Something went wrong: Controller: getIncomeByDate', error);
+        response.message = error.message;
+    }
+    return res.status(response.status).send(response);
+}
+
+module.exports.getIncomeByDateAndCategory = async (req, res) => {
+    let response = { ...constants.defaultServerResponse };
+    try {
+        res.status = 200;
+        res.send(
+            {
+                success: true,
+                message : 'bien joué'
+            }
+        );
+        const responseFromService = await incomeService.getIncomeByDateAndCategory(req.params);
+        response.status = 200;
+        response.message = constants.spentMessage.INCOME_FETCHED;
+        response.body = responseFromService;
+    } catch (error) {
+        console.log('Something went wrong: Controller: getIncomeByDateAndCategory', error);
+        response.message = error.message;
+    }
+    return res.status(response.status).send(response);
 }

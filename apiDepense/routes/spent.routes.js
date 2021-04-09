@@ -2,17 +2,17 @@ const express = require('express');
 const router = express.Router();
 
 const spentController = require('../controllers/spent.controller')
-const spentOneController = require('../controllers/spent-getOne.controller')
-const spentCreateController = require('../controllers/spent-create.controller')
-const spentUpdateController = require('../controllers/spent-update.controller')
-const spentDeleteController = require('../controllers/spent-delete.controller')
 
-
-router.get('/spent', spentController.getSpent);
-router.get('/spent/:id', spentOneController.getSpentById);
-router.post('/spent', spentCreateController.createSpent);
-router.put('/spent/:id', spentUpdateController.updateSpent);
-router.delete('/spent/:id', spentDeleteController.deleteSpent);
+router.get('/', spentController.getSpent);
+router.get('/FixedByDate/:dateBegin/:dateEnd', spentController.getSpentFixedByDate);
+router.get('/VariableByDate/:dateBegin/:dateEnd', spentController.getSpentVariableByDate);
+router.get('/allByDateCat/:dateBegin/:dateEnd', spentController.getSpentByDateAndSubCategory);
+router.get('/nineFixed', spentController.getNineSpentFixed);
+router.get('/nineVariable', spentController.getNineSpentVariable);
+router.get('/:id', spentController.getSpentById);
+router.post('/', spentController.createSpent);
+router.put('/:id', spentController.updateSpent);
+router.delete('/:id', spentController.deleteSpent);
 
 /*router.post('/login', spentController.getSpent);*/
 module.exports = router;

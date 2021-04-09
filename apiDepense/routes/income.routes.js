@@ -1,16 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const incomeController = require('../controllers/income.controller')
-const incomeOneController = require('../controllers/income-getOne.controller')
-const incomeCreateController = require('../controllers/income-create.controller')
-const incomeUpdateController = require('../controllers/income-update.controller')
-const incomeDeleteController = require('../controllers/income-delete.controller')
+const Controller = require('../controllers/income.controller')
 
-router.get('/income', incomeController.getIncome);
-router.get('/income/:id', incomeOneController.getIncomeById);
-router.post('/income', incomeCreateController.createIncome);
-router.put('/income/:id', incomeUpdateController.updateIncome);
-router.delete('/income/:id', incomeDeleteController.deleteIncome);
+router.get('/', Controller.getIncome);
+router.get('/nine', Controller.getNineIncome);
+router.get('/allByDate/:dateBegin/:dateEnd', Controller.getIncomeByDate);
+router.get('/allByDateCat/:dateBegin/:dateEnd', Controller.getIncomeByDateAndCategory);
+router.get('/:id', Controller.getIncomeById);
+router.post('/', Controller.createIncome);
+router.put('/:id', Controller.updateIncome);
+router.delete('/:id', Controller.deleteIncome);
 
 module.exports = router;
