@@ -4,8 +4,13 @@ const SpentSchema  = new mongoose.Schema({
     category: String,
     sub_category: String,
     value: Number,
-    date: Date,
+    nbrUpdated: Number,
+    oldRecords: [{
+        oldValue: Number,
+        lastDateUpdate: Date
+    }]
 }, {
+    strict: false,
     timestamps: true,
     toObject: {
         transform: function(doc, ret, options) {

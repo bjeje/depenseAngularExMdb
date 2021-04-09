@@ -8,10 +8,10 @@ const UserSchema  = new mongoose.Schema({
     password: {
         type: String,
         unique: true,
-    },
+    }, // todo change unique
     name: String,
     firstname: String,
-    email: String,
+    email: String, // todo change unique
     city: String,
     postalCode: Number,
     birthdate: Date,

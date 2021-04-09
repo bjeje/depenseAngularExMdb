@@ -108,6 +108,13 @@ module.exports.getIncomeByDate = async (req, res) => {
 module.exports.getIncomeByDateAndCategory = async (req, res) => {
     let response = { ...constants.defaultServerResponse };
     try {
+        res.status = 200;
+        res.send(
+            {
+                success: true,
+                message : 'bien joué'
+            }
+        );
         const responseFromService = await incomeService.getIncomeByDateAndCategory(req.params);
         response.status = 200;
         response.message = constants.spentMessage.INCOME_FETCHED;

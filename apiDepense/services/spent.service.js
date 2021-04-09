@@ -53,15 +53,35 @@ module.exports.getSpentById = async ({ id }) => {
 
 module.exports.updateSpent = async ({ id, updateInfo }) => {
   try {
+    let spent;
     checkObjectId(id);
-    let spent = await Spent.findOneAndUpdate(
-        { _id: id },
-        updateInfo,
-        { new: true }
-    )
+
+    if(updateInfo.category === "spentFixed") {
+      console.log(updateInfo._id);
+      spent = await Spent.findById(id);
+      if (!spent) {
+        throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
+      }
+      let oldValue = spent.value;
+      let lastDateUpdate = spent.updatedAt;
+
+      spent = await Spent.findOneAndUpdate(
+          { _id: id },
+          { $set: updateInfo, $inc: {nbrUpdated: 1},  $push: { oldRecords: { oldValue: oldValue, lastDateUpdate: lastDateUpdate}}},
+          { new: true }
+      )
+    } else {
+      spent = await Spent.findOneAndUpdate(
+          { _id: id },
+          { $set: updateInfo },
+          { new: true }
+      )
+    }
+
     if (!spent) {
       throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
     }
+
     return spent;
 
   } catch (error) {
