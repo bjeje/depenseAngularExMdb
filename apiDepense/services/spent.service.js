@@ -63,11 +63,11 @@ module.exports.updateSpent = async ({ id, updateInfo }) => {
         throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
       }
       let oldValue = spent.value;
-      let lastDateUpdate = spent.updatedAt;
+      let lastDate = spent.updatedAt;
 
       spent = await Spent.findOneAndUpdate(
           { _id: id },
-          { $set: updateInfo, $inc: {nbrUpdated: 1},  $push: { oldRecords: { oldValue: oldValue, lastDateUpdate: lastDateUpdate}}},
+          { $set: updateInfo, $inc: {nbrUpdated: 1},  $push: { oldRecords: { oldValue: oldValue, createdAt: lastDate}}},
           { new: true }
       )
     } else {

@@ -1,17 +1,12 @@
 const mongoose = require('mongoose');
 
 const UserSchema  = new mongoose.Schema({
-    login: {
-        type: String,
-        unique: true,
-    },
-    password: {
-        type: String,
-        unique: true,
-    }, // todo change unique
+    login: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+
     name: String,
     firstname: String,
-    email: String, // todo change unique
     city: String,
     postalCode: Number,
     birthdate: Date,
