@@ -1,32 +1,33 @@
 const createError = require('http-errors');
 const express = require('express');
+const morgan = require('morgan')
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
 const logger = require('morgan');
+
+const auth = require('./middleware/auth');
 
 const app = express();
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(morgan('tiny'))
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
+app.use(express.urlencoded({ extended: true }))
 
 const spentRouter = require('./routes/spent.routes');
 const userRouter = require('./routes/user.routes');
 const incomeRouter = require('./routes/income.routes');
 
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use(cors());
-
-app.use('/spent', spentRouter);
+app.use('/spent', auth.checkTokenMiddleware, spentRouter);
 app.use('/user', userRouter);
-app.use('/income', incomeRouter);
+app.use('/income', auth.checkTokenMiddleware, incomeRouter);
 
-app.set('view engine', 'pug');
+//app.set('view engine', 'pug');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

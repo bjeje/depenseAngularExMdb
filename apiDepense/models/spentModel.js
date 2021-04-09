@@ -10,6 +10,7 @@ const SpentSchema  = new mongoose.Schema({
         lastDateUpdate: Date
     }]
 }, {
+    //TODO VERIFY IF STRICT IS NECESSARY FOR UPDATE NOW
     strict: false,
     timestamps: true,
     toObject: {

@@ -3,6 +3,9 @@ module.exports = {
         status: 400,
         message: '',
     },
+    forbiddenResponse: {
+        message: "You don't have permission!",
+    },
     spentMessage: {
         SPENT_CREATED: 'Spent Created Successfully',
         SPENT_FETCHED: 'Spent Fetched Successfully',
