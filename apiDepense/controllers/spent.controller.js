@@ -76,3 +76,73 @@ module.exports.updateSpent = async (req, res) => {
   }
   return res.status(response.status).send(response);
 }
+
+module.exports.getNineSpentVariable = async (req, res) => {
+  let response = { ...constants.defaultServerResponse };
+  try {
+    const responseFromService = await spentService.getNineSpentVariable(req.params);
+    response.status = 200;
+    response.message = constants.spentMessage.SPENT_FETCHED;
+    response.body = responseFromService;
+  } catch (error) {
+    console.log('Something went wrong: Controller: getNineSpent', error);
+    response.message = error.message;
+  }
+  return res.status(response.status).send(response);
+}
+
+module.exports.getNineSpentFixed = async (req, res) => {
+  let response = { ...constants.defaultServerResponse };
+  try {
+    const responseFromService = await spentService.getNineSpentFixed(req.params);
+    response.status = 200;
+    response.message = constants.spentMessage.SPENT_FETCHED;
+    response.body = responseFromService;
+  } catch (error) {
+    console.log('Something went wrong: Controller: getNineSpent', error);
+    response.message = error.message;
+  }
+  return res.status(response.status).send(response);
+}
+
+module.exports.getSpentFixedByDate = async (req, res) => {
+  let response = { ...constants.defaultServerResponse };
+  try {
+    const responseFromService = await spentService.getSpentFixedByDate(req.params);
+    response.status = 200;
+    response.message = constants.spentMessage.SPENT_FETCHED;
+    response.body = responseFromService;
+  } catch (error) {
+    console.log('Something went wrong: Controller: getSpentFixedByDate', error);
+    response.message = error.message;
+  }
+  return res.status(response.status).send(response);
+}
+
+module.exports.getSpentVariableByDate = async (req, res) => {
+  let response = { ...constants.defaultServerResponse };
+  try {
+    const responseFromService = await spentService.getSpentVariableByDate(req.params);
+    response.status = 200;
+    response.message = constants.spentMessage.SPENT_FETCHED;
+    response.body = responseFromService;
+  } catch (error) {
+    console.log('Something went wrong: Controller: getSpentVariableByDate', error);
+    response.message = error.message;
+  }
+  return res.status(response.status).send(response);
+}
+
+module.exports.getSpentByDateAndSubCategory = async (req, res) => {
+  let response = { ...constants.defaultServerResponse };
+  try {
+    const responseFromService = await spentService.getSpentByDateAndSubCategory(req.params);
+    response.status = 200;
+    response.message = constants.spentMessage.SPENT_FETCHED;
+    response.body = responseFromService;
+  } catch (error) {
+    console.log('Something went wrong: Controller: getSpentByDateAndSubCategory', error);
+    response.message = error.message;
+  }
+  return res.status(response.status).send(response);
+}
