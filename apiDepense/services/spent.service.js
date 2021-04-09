@@ -57,7 +57,7 @@ module.exports.updateSpent = async ({ id, updateInfo }) => {
     checkObjectId(id);
 
     if(updateInfo.category === "spentFixed") {
-      console.log(updateInfo._id);
+
       spent = await Spent.findById(id);
       if (!spent) {
         throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
