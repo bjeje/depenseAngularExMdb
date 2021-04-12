@@ -1,0 +1,19 @@
+<div class="box__actual-account">
+  <div class="row">
+    <h2 class="account__title">Compte chèque</h2>
+    <span class="material-icons account__add">
+    add
+    </span>
+  </div>
+  <div class="row">
+    <span class="material-icons icon-card">
+    credit_card
+    </span>
+    <div *ngFor="let stay of totalStay">
+      <p *ngIf="stay" class="account__stay">{{stay.total}} €</p>
+    </div>
+  </div>
+</div>
+<div class="other__account">
+  <a class="link__other">Voir tous Les Comptes</a>
+</div>

@@ -9,3 +9,7 @@
 .row {
   display: flex;
 }
+
+.box__actual-account {
+  margin-top: 7.69em;
+}
