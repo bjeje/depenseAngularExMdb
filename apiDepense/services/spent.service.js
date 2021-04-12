@@ -92,7 +92,7 @@ module.exports.updateSpent = async ({ id, updateInfo }) => {
 
 module.exports.getNineSpentVariable = async () => {
   try {
-    let spent = await Spent.find({"category": "spendVariable" }).sort({_id: -1}).limit(9);
+    let spent = await Spent.find({"category": "spentVariable" }).sort({_id: -1}).limit(9);
     if (!spent) {
       throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
     }

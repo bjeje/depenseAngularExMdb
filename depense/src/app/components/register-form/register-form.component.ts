@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { UserService } from '@app/services/user.services';
+import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register-form',
@@ -18,16 +13,35 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class RegisterFormComponent implements OnInit {
 
-  emailFormControl = new FormControl('', [
+  /*emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
-  ]);
+  ]);*/
 
-  matcher = new MyErrorStateMatcher();
+  constructor(private userService: UserService, private router: Router) {}
 
-  constructor() {}
+  registerForm = new FormGroup({
+    login: new FormControl('',[
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(30)
+    ]),
+    password: new FormControl('' ,[Validators.required]),
+    email: new FormControl('' ,[Validators.required]),
+    name: new FormControl(''),
+    firstname: new FormControl(''),
+    city: new FormControl(''),
+    birthdate: new FormControl(''),
+  });
+  ngOnInit() {}
 
-  ngOnInit(): void {
-  }
-
+    async signup() {
+      (await this.userService.signup(this.registerForm.value)).subscribe(
+        (data: any) => {
+          if(data) {
+            this.router.navigate([ '/login' ]);
+          }
+        },
+      );
+    }
 }
