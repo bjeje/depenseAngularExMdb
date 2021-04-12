@@ -2,17 +2,17 @@
   <div class="loginLink">
     <a class="" href="/signup">S'inscrire?</a>
   </div>
-  <form class="form__login">
+  <form [formGroup]="loginForm" class="form__login" (ngSubmit)="signin()">
     <p class="box__input_login">
       <mat-form-field class="login__input" appearance="outline">
         <mat-label>Login</mat-label>
-        <input ng-model="user.login" class="input__login" type="text" matInput placeholder="">
+        <input formControlName="login" ng-model="user.login" class="input__login" type="text" matInput placeholder="" required>
       </mat-form-field>
     </p>
     <p class="box__input_login">
       <mat-form-field class="login__input" appearance="outline">
         <mat-label>Mot de passe</mat-label>
-        <input ng-model="user.password" class="input__login" type="password" matInput placeholder="">
+        <input formControlName="password" ng-model="user.password" class="input__login" type="password" matInput placeholder="" required>
       </mat-form-field>
     </p>
     <p class="form__submit">
