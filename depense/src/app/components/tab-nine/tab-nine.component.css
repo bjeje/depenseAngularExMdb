@@ -1,0 +1,50 @@
+.box__tab {
+  display: flex;
+  width: min-content;
+  background: #FFFFFF;
+  padding-right: 1.5em;
+}
+
+.tab__view {
+  padding: 0em 1.5em 0.7em 1.5em;
+}
+
+.under__tableName {
+  margin-top: 5em!important;
+}
+
+.nineContent {
+  display: flex;
+}
+
+.date {
+  color: #0CCEEB;
+}
+
+.separator, .category {
+  color: #07003B;
+}
+
+.separator {
+  margin: 0 0.3em 0 1.5em;
+}
+.valueIncome, .valueSpent {
+  position: absolute;
+  left: 20em;
+
+}
+
+.valueIncome {
+ color: #05F280;
+}
+
+.valueSpent {
+  color: #FF0005;
+}
+
+.edit-menu {
+  color: #07003B;
+  font-size: 18px;
+  position: relative;
+  top: 0.8em;
+}
