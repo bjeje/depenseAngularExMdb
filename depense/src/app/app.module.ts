@@ -26,10 +26,10 @@ import { TabNineComponent } from './components/tab-nine/tab-nine.component';
 import { LeftMenuComponent } from './components/left-menu/left-menu.component';
 import { TotalBoxComponent } from './components/total-box/total-box.component';
 import { ActualAccountComponent } from './components/actual-account/actual-account.component';
-import { LitteAddSpentComponent } from './components/little-add-spent/litte-add-spent.component';
 import {MatSelectModule} from '@angular/material/select';
 import { LittleAddFixedComponent } from './components/little-add-fixed/little-add-fixed.component';
 import { LittleAddIncomeComponent } from './components/little-add-income/little-add-income.component';
+import { LittleAddVariableComponent } from './components/little-add-variable/little-add-variable.component';
 
 @NgModule({
   declarations: [
@@ -46,9 +46,9 @@ import { LittleAddIncomeComponent } from './components/little-add-income/little-
     LeftMenuComponent,
     TotalBoxComponent,
     ActualAccountComponent,
-    LitteAddSpentComponent,
     LittleAddFixedComponent,
-    LittleAddIncomeComponent
+    LittleAddIncomeComponent,
+    LittleAddVariableComponent
   ],
   imports: [
     HttpClientModule,
