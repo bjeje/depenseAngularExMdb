@@ -7,8 +7,8 @@
         Recette
       </ng-template>
       <span class="under__tableName"></span>
-      <div *ngFor="let income of listIncome.body">
-        <div class="nineContent">
+      <div *ngFor="let income of listIncome">
+        <div *ngIf="listIncome" class="nineContent">
           <p class="date">{{income.createdAt}}</p>
           <span class="separator">|</span>
           <p class="category">{{income.category}}</p>
@@ -23,8 +23,8 @@
         Dépense Variable
       </ng-template>
       <span class="under__tableName"></span>
-      <div *ngFor="let spent of listSpentVariable.body">
-        <div class="nineContent">
+      <div *ngFor="let spent of listSpentVariable">
+        <div *ngIf="listSpentVariable" class="nineContent">
           <p class="date">{{spent.createdAt}}</p>
           <span class="separator">|</span>
           <p class="category">{{spent.sub_category}}</p>
@@ -39,8 +39,8 @@
         Dépense Fixe
       </ng-template>
       <span class="under__tableName"></span>
-      <div *ngFor="let spent of listSpentFixed.body">
-        <div class="nineContent">
+      <div *ngFor="let spent of listSpentFixed">
+        <div *ngIf="listSpentFixed" class="nineContent">
           <p class="date">{{spent.createdAt}}</p>
           <span class="separator">|</span>
           <p class="category">{{spent.sub_category}}</p>

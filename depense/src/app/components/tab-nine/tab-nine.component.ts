@@ -37,6 +37,7 @@ export class TabNineComponent implements OnInit {
     (await this.incomeService.getNineIncome()).subscribe(data => {
       if (data) {
         this.listIncome = data;
+        this.listIncome = this.listIncome.body;
         tranformDateFr(this.listIncome);
       }
     });
@@ -46,6 +47,7 @@ export class TabNineComponent implements OnInit {
     (await this.spentService.getNineSpentFixed()).subscribe(data => {
       if (data) {
         this.listSpentFixed = data;
+        this.listSpentFixed = this.listSpentFixed.body;
         tranformDateFr(this.listSpentFixed);
       }
     });
@@ -55,6 +57,7 @@ export class TabNineComponent implements OnInit {
     (await this.spentService.getNineSpentVariable()).subscribe(data => {
       if (data) {
         this.listSpentVariable = data;
+        this.listSpentVariable = this.listSpentVariable.body;
         tranformDateFr(this.listSpentVariable);
       }
     });
@@ -62,7 +65,7 @@ export class TabNineComponent implements OnInit {
 }
 
 function tranformDateFr(list: any) {
-  list.body.forEach((object: any) => {
+  list.forEach((object: any) => {
     object.createdAt = dayjs(object.createdAt).format('DD MMMM YYYY');
   });
 }
