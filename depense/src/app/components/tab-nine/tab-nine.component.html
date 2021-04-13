@@ -1,0 +1,53 @@
+<!--<p>tab-nine works!</p>-->
+<div class="box__tab">
+  <mat-tab-group class="tab__view">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon"></mat-icon>
+        Recette
+      </ng-template>
+      <span class="under__tableName"></span>
+      <div *ngFor="let income of listIncome">
+        <div *ngIf="listIncome" class="nineContent">
+          <p class="date">{{income.createdAt}}</p>
+          <span class="separator">|</span>
+          <p class="category">{{income.category}}</p>
+          <p class="valueIncome">{{income.value}}</p>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon"></mat-icon>
+        Dépense Variable
+      </ng-template>
+      <span class="under__tableName"></span>
+      <div *ngFor="let spent of listSpentVariable">
+        <div *ngIf="listSpentVariable" class="nineContent">
+          <p class="date">{{spent.createdAt}}</p>
+          <span class="separator">|</span>
+          <p class="category">{{spent.sub_category}}</p>
+          <p class="valueSpent">{{spent.value}}</p>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon"></mat-icon>
+        Dépense Fixe
+      </ng-template>
+      <span class="under__tableName"></span>
+      <div *ngFor="let spent of listSpentFixed">
+        <div *ngIf="listSpentFixed" class="nineContent">
+          <p class="date">{{spent.createdAt}}</p>
+          <span class="separator">|</span>
+          <p class="category">{{spent.sub_category}}</p>
+          <p class="valueSpent">{{spent.value}}</p>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <i class="far fa-edit edit-menu"></i>
+</div>

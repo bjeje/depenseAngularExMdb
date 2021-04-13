@@ -85,7 +85,7 @@ module.exports.getNineSpentVariable = async (req, res) => {
     response.message = constants.spentMessage.SPENT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log('Something went wrong: Controller: getNineSpent', error);
+    console.log('Something went wrong: Controller: getNineSpentVariable', error);
     response.message = error.message;
   }
   return res.status(response.status).send(response);
@@ -99,7 +99,7 @@ module.exports.getNineSpentFixed = async (req, res) => {
     response.message = constants.spentMessage.SPENT_FETCHED;
     response.body = responseFromService;
   } catch (error) {
-    console.log('Something went wrong: Controller: getNineSpent', error);
+    console.log('Something went wrong: Controller: getNineSpentFixed', error);
     response.message = error.message;
   }
   return res.status(response.status).send(response);

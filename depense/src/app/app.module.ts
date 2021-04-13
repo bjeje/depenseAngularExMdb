@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatTabsModule } from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -20,6 +21,15 @@ import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { TabNineComponent } from './components/tab-nine/tab-nine.component';
+import { LeftMenuComponent } from './components/left-menu/left-menu.component';
+import { TotalBoxComponent } from './components/total-box/total-box.component';
+import { ActualAccountComponent } from './components/actual-account/actual-account.component';
+import {MatSelectModule} from '@angular/material/select';
+import { LittleAddFixedComponent } from './components/little-add-fixed/little-add-fixed.component';
+import { LittleAddIncomeComponent } from './components/little-add-income/little-add-income.component';
+import { LittleAddVariableComponent } from './components/little-add-variable/little-add-variable.component';
 
 @NgModule({
   declarations: [
@@ -30,10 +40,20 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
     LoginComponent,
     UserComponent,
     LoginPageComponent,
-    SignupPageComponent
+    SignupPageComponent,
+    HomePageComponent,
+    TabNineComponent,
+    LeftMenuComponent,
+    TotalBoxComponent,
+    ActualAccountComponent,
+    LittleAddFixedComponent,
+    LittleAddIncomeComponent,
+    LittleAddVariableComponent
   ],
   imports: [
     HttpClientModule,
+    MatSelectModule,
+    MatTabsModule,
     MatInputModule,
     MatSliderModule,
     BrowserModule,

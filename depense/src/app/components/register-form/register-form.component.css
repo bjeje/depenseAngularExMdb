@@ -37,3 +37,12 @@ a {
 .mat-form-field {
   line-height: 1em;
 }
+
+.submit__btn {
+  margin-top: 1em;
+  height: 3em;
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  border-radius: 1em;
+  outline: none;
+  background: #05F280;
+}

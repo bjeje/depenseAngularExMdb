@@ -1,0 +1,19 @@
+.title__page {
+  color: #07003B;
+  font-size: 1.8em;
+  font-weight: bold;
+  margin: 2em 0 1.5em 0;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+}
+
+.box__actual-account {
+  margin-top: 7.69em;
+}
+
+.box__add {
+  margin-top: 2em;
+}
