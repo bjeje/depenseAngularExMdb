@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SpentService } from '../../services/spent-service';
+import { IncomeService } from '../../services/income-service';
 import { Router } from '@angular/router';
 
 
-interface Spent {
+interface Income {
   value: string;
   viewValue: string;
 }
@@ -15,31 +15,26 @@ interface Spent {
   styleUrls: ['./little-add-income.component.css']
 })
 export class LittleAddIncomeComponent implements OnInit {
-  spentForm = this.formBuilder.group({
+  incomeForm = this.formBuilder.group({
     value: ['', Validators.required],
-    category: ["spentVariable"],
-    sub_category: ['', Validators.required]
+    category: ['', Validators.required]
   });
 
-  spents: Spent[] = [
-    {value: 'Course', viewValue: 'Course'},
-    {value: 'Essence', viewValue: 'Essence'},
-    {value: 'Cigarette', viewValue: 'Cigarette'},
-    {value: 'Loisir', viewValue: 'Loisir'},
-    {value: 'Vetements', viewValue: 'Vêtements'},
-    {value: 'Voiture', viewValue: 'Voiture'},
-    {value: 'Medical', viewValue: 'Medical'},
-    {value: 'Divers', viewValue: 'Divers'},
+  incomes: Income[] = [
+    {value: 'Salaire', viewValue: 'Salaire'},
+    {value: 'Bourse', viewValue: 'Bourse'},
+    {value: 'Cadeau', viewValue: 'Cadeau'},
+    {value: 'Autre', viewValue: 'Autre'},
   ];
 
-  constructor(private formBuilder: FormBuilder, private Spent: SpentService) { }
+  constructor(private formBuilder: FormBuilder, private Income: IncomeService) { }
 
   ngOnInit(): void {
   }
   async addCategory() {
-    this.spentForm.value.sub_category = this.spentForm.value.sub_category.value;
+    this.incomeForm.value.category = this.incomeForm.value.category.value;
 
-    (await this.Spent.createSpent(this.spentForm.value)).subscribe(
+    (await this.Income.createIncome(this.incomeForm.value)).subscribe(
       (data: any) => {
         if(data) {
           console.log(data);
@@ -51,7 +46,7 @@ export class LittleAddIncomeComponent implements OnInit {
   }
 
   resetForm() {
-    this.spentForm.reset();
+    this.incomeForm.reset();
   }
 
 

@@ -9,33 +9,33 @@ interface Spent {
 }
 
 @Component({
-  selector: 'app-little-add-fixed',
-  templateUrl: './little-add-fixed.component.html',
-  styleUrls: ['./little-add-fixed.component.css']
+  selector: 'app-little-add-variable',
+  templateUrl: './little-add-variable.component.html',
+  styleUrls: ['./little-add-variable.component.css']
 })
-export class LittleAddFixedComponent implements OnInit {
-
+export class LittleAddVariableComponent implements OnInit {
   spentForm = this.formBuilder.group({
     value: ['', Validators.required],
-    category: ["spentFixed"],
+    category: ["spentVariable"],
     sub_category: ['', Validators.required]
   });
 
   spents: Spent[] = [
-    {value: 'Loyer', viewValue: 'Loyer'},
-    {value: 'Electicite', viewValue: 'Cadeau'},
-    {value: 'Eau', viewValue: 'Eau'},
-    {value: 'Credit', viewValue: 'Crédits'},
-    {value: 'Assurance', viewValue: 'Assurance'},
-    {value: 'Forfait', viewValue: 'Forfait'},
-    {value: 'Impots', viewValue: 'Impôts'},
-    {value: 'Banque', viewValue: 'Banque'},
+    {value: 'Course', viewValue: 'Course'},
+    {value: 'Essence', viewValue: 'Essence'},
+    {value: 'Cigarette', viewValue: 'Cigarette'},
+    {value: 'Loisir', viewValue: 'Loisir'},
+    {value: 'Vetements', viewValue: 'Vêtements'},
+    {value: 'Voiture', viewValue: 'Voiture'},
+    {value: 'Medical', viewValue: 'Medical'},
+    {value: 'Divers', viewValue: 'Divers'},
   ];
 
   constructor(private formBuilder: FormBuilder, private Spent: SpentService) { }
 
   ngOnInit(): void {
   }
+
   async addCategory() {
     this.spentForm.value.sub_category = this.spentForm.value.sub_category.value;
 
@@ -44,7 +44,7 @@ export class LittleAddFixedComponent implements OnInit {
         if(data) {
           console.log(data);
           this.resetForm();
-          window.location.reload();
+          window.location.reload()
         }
       },
     );
@@ -53,4 +53,5 @@ export class LittleAddFixedComponent implements OnInit {
   resetForm() {
     this.spentForm.reset();
   }
+
 }
