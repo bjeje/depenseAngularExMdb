@@ -2,29 +2,29 @@
   <div class="registerLink">
     <a class="" href="/login">Déjà inscrit?</a>
   </div>
-  <form class="form__register">
+  <form [formGroup]="registerForm" class="form__register" (ngSubmit)="signup()">
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Login</mat-label>
-        <input class="input__register" type="text" matInput placeholder="">
+        <input formControlName="login" class="input__register" type="text" matInput placeholder="" required>
       </mat-form-field>
     </p>
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Mot de passe</mat-label>
-        <input class="input__register" type="password" matInput placeholder="">
+        <input formControlName="password" class="input__register" type="password" matInput placeholder="" required>
       </mat-form-field>
     </p>
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Nom</mat-label>
-        <input class="input__register" type="password" matInput placeholder="">
+        <input formControlName="name" class="input__register" type="text" matInput placeholder="">
       </mat-form-field>
     </p>
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Prénom</mat-label>
-        <input class="input__register" type="password" matInput placeholder="">
+        <input formControlName="firstname" class="input__register" type="text" matInput placeholder="">
       </mat-form-field>
     </p>
     <!--<mat-form-field class="register__input" appearance="outline">
@@ -41,13 +41,13 @@
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Email</mat-label>
-        <input class="input__register" type="email" matInput placeholder="">
+        <input formControlName="email" class="input__register" type="email" matInput placeholder="" required>
       </mat-form-field>
     </p>
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Ville</mat-label>
-        <input class="input__register" type="text" matInput placeholder="">
+        <input formControlName="city" class="input__register" type="text" matInput placeholder="">
       </mat-form-field>
     </p>
     <p class="box__input_register">
@@ -59,8 +59,11 @@
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Date de naissance</mat-label>
-        <input class="input__register" type="date" matInput placeholder="">
+        <input formControlName="birthdate" class="input__register" type="date" matInput placeholder="">
       </mat-form-field>
+    </p>
+    <p class="form__submit">
+      <button class="submit__btn" type="submit">Envoyer</button>
     </p>
   </form>
 </div>

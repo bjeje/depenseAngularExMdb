@@ -94,7 +94,7 @@ module.exports.login = async (req, res) => {
 
         if(await bcrypt.compare(users.password, user.password)) {
             const token = generateAccessToken(user.login, false)
-            console.log(token);
+            /*console.log(token);*/
             return token;
         } else {
             throw new Error(constants.forbiddenResponse.message);

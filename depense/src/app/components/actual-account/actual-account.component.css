@@ -1,0 +1,40 @@
+.box__actual-account , .other__account {
+  background: #FFFFFF;
+  padding: 0.5em 2em;
+  width: auto;
+}
+
+.other__account {
+  padding: 0.5em 2em;
+  margin: 0.5em auto 0 auto;
+  text-align: center;
+}
+
+.link__other {
+  text-decoration: none;
+  color: #0CCEEB;
+}
+
+.icon-card {
+  font-size: 80px;
+  color: #05F280;
+}
+
+.account__title {
+  color: #07003B;
+  padding-left: 1em;
+}
+
+.account__add {
+  position: relative;
+  top: 0.2em;
+  left: 3em;
+  font-size: 25px;
+}
+
+.account__stay {
+  padding: 1.3em 0 0 2em;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #07003B;
+}

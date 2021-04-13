@@ -1,0 +1,42 @@
+.content__menu {
+  padding: 2.5em 1em;
+  background: #FFFFFF;
+  min-height: 85vh;
+  max-height: 100%;
+  width: auto;
+  margin-right: 2.5em;
+}
+
+.photo {
+  height: 4em;
+  border-radius: 50%;
+  padding-right: 0.5em;
+  vertical-align: middle;
+}
+
+.active{
+  color: #05F280;
+}
+
+.material-icons {
+  vertical-align: middle;
+  padding-bottom: 0.2em;
+}
+
+.menu__link--left {
+  margin-top: 3.2em;
+}
+
+a {
+  font-size: 1.4em;
+  color: #07003B;
+}
+
+ul {
+  padding-inline-start: 0;
+  list-style-type: none;
+}
+
+li {
+  line-height: 2.8em;
+}
