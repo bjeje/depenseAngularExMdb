@@ -190,7 +190,6 @@ module.exports.getSpentByDateAndSubCategory = async ({ dateBegin, dateEnd }) => 
             totalSpentVariable += spent.amount;
           }
         });
-
         return results;
       });
     spent.push({totalSpentFixed: totalSpentFixed});
