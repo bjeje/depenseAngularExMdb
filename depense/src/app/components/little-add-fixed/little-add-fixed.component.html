@@ -1,0 +1,25 @@
+<div class="box__little">
+  <form [formGroup]="spentForm" class="form__login" (ngSubmit)="addCategory()">
+    <i class="material-icons icon-choose">more_horiz</i>
+    <div class="row">
+      <p class="box__input_login" style="font-size: 13px">
+        <mat-form-field class="insert__input" appearance="outline">
+          <mat-label>Montant</mat-label>
+          <input formControlName="value" class="input__login" type="number" matInput placeholder="" required>
+        </mat-form-field>
+      </p>
+      <mat-form-field appearance="fill" class="choosen__type" style="font-size: 13px">
+        <mat-label>Type d'ajout</mat-label>
+        <mat-select formControlName="sub_category">
+          <mat-option required *ngFor="let spent of spents" [value]="spent">
+            {{spent.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <p class="form__submit">
+      <button class="submit__add" [disabled]="spentForm.invalid">ENVOYER</button>
+    </p>
+  </form>
+</div>
