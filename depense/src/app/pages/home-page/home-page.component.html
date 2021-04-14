@@ -19,7 +19,15 @@
             <app-total-box></app-total-box>
           </div>
           <div class="box__add">
-            <app-little-add-income></app-little-add-income>
+            <i class="material-icons icon-choose" mat-button [matMenuTriggerFor]="menu">more_horiz</i>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="changeCompoAdd('Variable')">Variable</button>
+              <button mat-menu-item (click)="changeCompoAdd('Fixed')">Fixe</button>
+              <button mat-menu-item (click)="changeCompoAdd('Income')">Recette</button>
+            </mat-menu>
+            <app-little-add-variable *ngIf="compoCreate === 'Variable'"></app-little-add-variable>
+            <app-little-add-fixed *ngIf="compoCreate === 'Fixed'"></app-little-add-fixed>
+            <app-little-add-income *ngIf="compoCreate === 'Income'"></app-little-add-income>
           </div>
         </div>
       </div>

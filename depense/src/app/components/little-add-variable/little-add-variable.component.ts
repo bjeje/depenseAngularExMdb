@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { SpentService } from '../../services/spent-service';
-import { Router } from '@angular/router';
 
 interface Spent {
   value: string;
