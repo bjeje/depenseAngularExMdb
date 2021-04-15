@@ -2,6 +2,16 @@
   margin-left: 180px;
 }
 
+.back--open {
+  width: 181px;
+  background: #FFFFFF;
+}
+
+.back--close {
+  width: 70px;
+  background: #FFFFFF;
+}
+
 .content__page--close {
   margin: 0 16% 0 14%!important;
 }
@@ -37,11 +47,10 @@
 }
 
 .box__add {
-  position: relative;
-  top: -10.8em;
-  margin-left: 1em;
+  margin: 1em 0 1em 1em;
   padding-bottom: 1em;
   background: #FFFFFF;
+  width: 24.3em;
   height: min-content;
 }
 

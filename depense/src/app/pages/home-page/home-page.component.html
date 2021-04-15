@@ -2,9 +2,12 @@
 
     <mat-drawer-container
       id="sidenavContainer">
+        <div [ngClass]="isMenuOpen ? 'back--open' : 'back--close'"></div>
         <app-left-menu class="left-menu" (sendLeftMenuStatus)='sendStatusMenu($event)'></app-left-menu>
+        <!-- ADD MARGIN OR NOT IF MENU IS OPEN OR CLOSE -->
         <div [ngClass]="isMenuOpen ? 'margin__open' : 'margin__close'">
           <div class="col-lg-12">
+            <!-- ADD MARGIN OR REDUCE IF MENU IS OPEN OR CLOSE FOR CENTER CONTENT -->
             <div [ngClass]="isMenuOpen ? 'content__page--open' : 'content__page--close'">
               <div class="row">
                 <div class="col-md-7">
@@ -15,21 +18,22 @@
                 </div>
                 <div class="col-md-5 box__actual-account">
                   <app-actual-account></app-actual-account>
+                  <div class="box__add">
+                    <i class="material-icons icon-choose" mat-button [matMenuTriggerFor]="menu">more_horiz</i>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item (click)="changeCompoAdd('Variable')">Variable</button>
+                      <button mat-menu-item (click)="changeCompoAdd('Fixed')">Fixe</button>
+                      <button mat-menu-item (click)="changeCompoAdd('Income')">Recette</button>
+                    </mat-menu>
+                    <app-little-add-variable *ngIf="compoCreate === 'Variable'"></app-little-add-variable>
+                    <app-little-add-fixed *ngIf="compoCreate === 'Fixed'"></app-little-add-fixed>
+                    <app-little-add-income *ngIf="compoCreate === 'Income'"></app-little-add-income>
+                  </div>
                 </div>
-                <div class="TotalBox col-md-7">
+                <div class="TotalBox col-md-5">
                   <app-total-box></app-total-box>
                 </div>
-                <div class="box__add">
-                  <i class="material-icons icon-choose" mat-button [matMenuTriggerFor]="menu">more_horiz</i>
-                  <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="changeCompoAdd('Variable')">Variable</button>
-                    <button mat-menu-item (click)="changeCompoAdd('Fixed')">Fixe</button>
-                    <button mat-menu-item (click)="changeCompoAdd('Income')">Recette</button>
-                  </mat-menu>
-                  <app-little-add-variable *ngIf="compoCreate === 'Variable'"></app-little-add-variable>
-                  <app-little-add-fixed *ngIf="compoCreate === 'Fixed'"></app-little-add-fixed>
-                  <app-little-add-income *ngIf="compoCreate === 'Income'"></app-little-add-income>
-                </div>
+
               </div>
             </div>
             <!-- END CONTENT PAGE -->

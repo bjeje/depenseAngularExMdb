@@ -1,26 +1,26 @@
-<div class="total__box col-md-6">
-    <div class="box__income col-md-8">
+<div class="total__box col-md-5">
+    <div class="box__income">
       <div class="row">
-        <div class="income col-md-12">
+        <div class="income">
           <h3 class="title__total">Recette du mois <i class="material-icons icon-choose">more_horiz</i></h3>
           <div *ngFor="let income of listIncome; let last = last;">
-            <p *ngIf="last" class="total__income col-md-12"> {{income.totalIncome}} €</p>
+            <p *ngIf="last" class="total__income"> {{income.totalIncome}} €</p>
           </div>
         </div>
       </div>
     </div>
-      <div class="box__spent col-md-8">
+      <div class="box__spent">
         <div class="row">
-          <div class="spent__variable col-md-6">
+          <div class="spent__variable">
             <h3 class="title__total">Dépense variable</h3>
             <div *ngFor="let spent of listSpentVariable; let last = last;">
               <p *ngIf="last" class="total__spent"> {{spent.totalSpentVariable}} €</p>
             </div>
           </div>
-          <div class="spent__fixed col-md-6">
-            <h3 class="title__total">Dépense fixe</h3>
+          <div class="spent__fixed">
+            <h3 class="title__total fixed">Dépense fixe</h3>
             <div *ngFor="let spent of listSpentFixed; let last = last;">
-              <p *ngIf="last" class="total__spent"> {{spent.totalSpentFixed}} €</p>
+              <p *ngIf="last" class="total__spent fixed"> {{spent.totalSpentFixed}} €</p>
             </div>
           </div>
       </div>

@@ -19,7 +19,7 @@ export class LeftMenuComponent implements OnInit {
   contentMargin = 10;
 
   imgMen:any = "assets/img/men.jpg";
-  imgWoman:any = "assets/img/men.jpg";
+  imgWoman:any = "assets/img/woman.jpg";
   constructor(fb: FormBuilder) {
     this.options = fb.group({
       bottom: 0,
