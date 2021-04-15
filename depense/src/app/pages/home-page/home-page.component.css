@@ -1,3 +1,11 @@
+.margin__open {
+  margin-left: 180px;
+}
+
+.margin__close {
+  margin-left: 70px;
+}
+
 #sidenavContainer {
   margin-top: 0;
   min-height: 85vh;

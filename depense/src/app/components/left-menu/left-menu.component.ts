@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {HostListener} from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
+import {sendMessageToMaster} from '@angular/compiler-cli/ngcc/src/execution/cluster/utils';
 
 @Component({
   selector: 'app-left-menu',
   templateUrl: './left-menu.component.html',
   styleUrls: ['./left-menu.component.css']
 })
+
+
 export class LeftMenuComponent implements OnInit {
+  @Output() sendLeftMenuStatus = new EventEmitter<boolean>();
   options: FormGroup;
 
   isMenuOpen = true;
@@ -35,6 +40,8 @@ export class LeftMenuComponent implements OnInit {
     } else {
       this.contentMargin = 10;
     }
+    /* Send value menu to parents */
+    this.getMenuOpen(this.isMenuOpen);
   }
 
   appropriateClass:string = '';
@@ -47,6 +54,12 @@ export class LeftMenuComponent implements OnInit {
     }else{
       this.appropriateClass = 'bottomStick';
     }
+  }
+
+  /* send to other page if left menu is open */
+
+  getMenuOpen(value: boolean) {
+    this.sendLeftMenuStatus.emit(value);
   }
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild, AfterViewInit} from '@angular/core';
+import { LeftMenuComponent } from '../../components/left-menu/left-menu.component'
 
 @Component({
   selector: 'app-home-page',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HomePageComponent implements OnInit {
+  isMenuOpen = true;
+  constructor() {}
 
-  constructor() { }
   compoCreate = "Variable";
 
   ngOnInit(): void {
@@ -17,4 +19,11 @@ export class HomePageComponent implements OnInit {
   changeCompoAdd(value: string) {
     this.compoCreate = value;
   }
+
+
+  sendStatusMenu(newStatusMenu: boolean) {
+    console.log(newStatusMenu);
+    this.isMenuOpen = newStatusMenu;
+  }
+
 }
