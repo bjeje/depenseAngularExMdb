@@ -1,3 +1,9 @@
+#sidenavContainer {
+  margin-top: 0;
+  min-height: 85vh;
+  background: #F6F7F9;
+}
+
 .title__page {
   color: #07003B;
   font-size: 1.8em;
@@ -26,4 +32,9 @@
   top:0.5em;
   left: 85%;
   padding-bottom: 0.7em;
+}
+
+.left-menu {
+  min-height: 100%;
+  height: auto;
 }

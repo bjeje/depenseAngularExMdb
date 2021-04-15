@@ -1,31 +1,71 @@
-<div class="content__menu">
-  <p class="info__profil"><img [src]="imgMen" class="photo" alt="photo"> Jérôme Botiveau</p>
-  <div class="menu__link--left">
-    <ul>
-      <li>
-        <a class="active"><span class="material-icons active">
-        bolt
-        </span> Compte</a>
-      </li>
-      <li>
+<mat-drawer
+  mode="side"
+  #sidenav
+  id="sidenav"
+  [class.menu-open]="isMenuOpen"
+  [class.menu-close]="!isMenuOpen"
+  opened>
 
-        <a> <span class="material-icons">
-        settings
-        </span> Admin</a>
-      </li>
-      <li>
-        <a> <span class="material-icons">
-        person
-        </span> Profil</a>
-      </li>
-      <li>
-        <a><span class="material-icons">
-          equalizer
-          </span> Statistique
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
+  <mat-list id="menus">
+    <div [ngClass]='appropriateClass' class="menus__sticky" >
+      <mat-card [ngClass]="isMenuOpen ? 'card__open' : 'card__close'">
+          <img [src]="imgMen" class="photo" alt="photo">
+        <div [ngClass]="isMenuOpen ? 'role__bottom' : 'role__normal'">
+          <mat-card-title [ngClass]="isMenuOpen ? 'identity__name' : 'identity__name-close'"
+                          class="identity__name">Jérôme</mat-card-title>
 
+            <mat-card-subtitle [ngClass]="isMenuOpen ? 'identity__role' : 'identity__role-close'"
+                               class="identity__role">Admin</mat-card-subtitle>
+          </div>
+
+      </mat-card>
+      <mat-list-item>
+        <a
+          class="menu-item active"
+          mat-flat-button>
+          <mat-icon>bolt</mat-icon>
+          Compte</a>
+      </mat-list-item>
+
+      <mat-list-item>
+        <a
+          class="menu-item"
+          mat-flat-button>
+          <mat-icon>person</mat-icon>
+          Profil</a>
+      </mat-list-item>
+
+      <mat-list-item>
+        <a
+          class="menu-item"
+          mat-flat-button>
+          <mat-icon>equalizer</mat-icon>
+          Statistique</a>
+      </mat-list-item>
+
+      <mat-list-item>
+        <a
+          class="menu-item"
+          mat-flat-button>
+          <mat-icon>settings_application</mat-icon>
+          Admin</a>
+      </mat-list-item>
+
+      <span *ngIf="!isMenuOpen" class="material-icons openSidenavControl" (click)="onToolbarMenuToggle()">
+        chevron_right
+      </span>
+      <span *ngIf="isMenuOpen" class="material-icons closeSidenavControl" (click)="onToolbarMenuToggle()">
+        close
+      </span>
+
+      <mat-list-item class="logout">
+        <a
+          class="menu-item logout--style"
+          mat-flat-button>
+          <mat-icon>logout</mat-icon>
+          Déconnection</a>
+      </mat-list-item>
+    </div>
+  </mat-list>
+</mat-drawer>
 

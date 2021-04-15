@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 
@@ -52,6 +57,8 @@ import { LittleAddVariableComponent } from './components/little-add-variable/lit
   ],
   imports: [
     HttpClientModule,
+    MatSidenavModule,
+    MatToolbarModule,
     MatSelectModule,
     MatTabsModule,
     MatInputModule,
@@ -64,6 +71,9 @@ import { LittleAddVariableComponent } from './components/little-add-variable/lit
     ReactiveFormsModule,
     MatFormFieldModule,
     MatOptionModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
