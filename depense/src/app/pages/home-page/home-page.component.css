@@ -2,6 +2,14 @@
   margin-left: 180px;
 }
 
+.content__page--close {
+  margin: 0 16% 0 14%!important;
+}
+
+.content__page--open {
+  margin: 0 17% 0 7%!important;
+}
+
 .margin__close {
   margin-left: 70px;
 }
@@ -29,7 +37,9 @@
 }
 
 .box__add {
-  margin-top: 2em;
+  position: relative;
+  top: -10.8em;
+  margin-left: 1em;
   padding-bottom: 1em;
   background: #FFFFFF;
   height: min-content;

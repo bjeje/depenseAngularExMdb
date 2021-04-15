@@ -1,12 +1,12 @@
 .box__actual-account , .other__account {
   background: #FFFFFF;
   padding: 0.5em 2em;
-  width: auto;
+  max-width: 24.3em;
 }
 
 .other__account {
   padding: 0.5em 2em;
-  margin: 0.5em auto 0 auto;
+  margin: 0.5em 0 0 0;
   text-align: center;
 }
 
@@ -28,7 +28,7 @@
 .account__add {
   position: relative;
   top: 0.2em;
-  left: 3em;
+  left: 4em;
   font-size: 25px;
 }
 

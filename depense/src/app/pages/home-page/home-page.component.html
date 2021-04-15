@@ -1,40 +1,40 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid p-0">
+
     <mat-drawer-container
-      id="sidenavContainer"
-      autosize>
+      id="sidenavContainer">
         <app-left-menu class="left-menu" (sendLeftMenuStatus)='sendStatusMenu($event)'></app-left-menu>
         <div [ngClass]="isMenuOpen ? 'margin__open' : 'margin__close'">
-          <div class="col-md-10">
-            <div class="row">
-              <div class="col-md-7">
-                <div class="main__view">
-                  <p class="title__page">Compte</p>
-                  <app-tab-nine></app-tab-nine>
+          <div class="col-lg-12">
+            <div [ngClass]="isMenuOpen ? 'content__page--open' : 'content__page--close'">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="main__view">
+                    <p class="title__page">Compte</p>
+                    <app-tab-nine></app-tab-nine>
+                  </div>
+                </div>
+                <div class="col-md-5 box__actual-account">
+                  <app-actual-account></app-actual-account>
+                </div>
+                <div class="TotalBox col-md-7">
+                  <app-total-box></app-total-box>
+                </div>
+                <div class="box__add">
+                  <i class="material-icons icon-choose" mat-button [matMenuTriggerFor]="menu">more_horiz</i>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="changeCompoAdd('Variable')">Variable</button>
+                    <button mat-menu-item (click)="changeCompoAdd('Fixed')">Fixe</button>
+                    <button mat-menu-item (click)="changeCompoAdd('Income')">Recette</button>
+                  </mat-menu>
+                  <app-little-add-variable *ngIf="compoCreate === 'Variable'"></app-little-add-variable>
+                  <app-little-add-fixed *ngIf="compoCreate === 'Fixed'"></app-little-add-fixed>
+                  <app-little-add-income *ngIf="compoCreate === 'Income'"></app-little-add-income>
                 </div>
               </div>
-              <div class="col-md-5 box__actual-account">
-                <app-actual-account></app-actual-account>
-              </div>
             </div>
-            <div class="row">
-              <div class="TotalBox col-md-7">
-                <app-total-box></app-total-box>
-              </div>
-              <div class="box__add">
-                <i class="material-icons icon-choose" mat-button [matMenuTriggerFor]="menu">more_horiz</i>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item (click)="changeCompoAdd('Variable')">Variable</button>
-                  <button mat-menu-item (click)="changeCompoAdd('Fixed')">Fixe</button>
-                  <button mat-menu-item (click)="changeCompoAdd('Income')">Recette</button>
-                </mat-menu>
-                <app-little-add-variable *ngIf="compoCreate === 'Variable'"></app-little-add-variable>
-                <app-little-add-fixed *ngIf="compoCreate === 'Fixed'"></app-little-add-fixed>
-                <app-little-add-income *ngIf="compoCreate === 'Income'"></app-little-add-income>
-              </div>
-            </div>
+            <!-- END CONTENT PAGE -->
           </div>
         </div>
     </mat-drawer-container>
-  </div>
+
 </div>
