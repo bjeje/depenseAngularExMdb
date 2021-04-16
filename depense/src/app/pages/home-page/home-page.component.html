@@ -1,8 +1,8 @@
 <div class="container-fluid p-0">
-
+  <div [ngClass]="isMenuOpen ? 'back--open' : 'back--close'"></div>
     <mat-drawer-container
       id="sidenavContainer">
-        <div [ngClass]="isMenuOpen ? 'back--open' : 'back--close'"></div>
+
         <app-left-menu class="left-menu" (sendLeftMenuStatus)='sendStatusMenu($event)'></app-left-menu>
         <!-- ADD MARGIN OR NOT IF MENU IS OPEN OR CLOSE -->
         <div [ngClass]="isMenuOpen ? 'margin__open' : 'margin__close'">
@@ -33,7 +33,9 @@
                 <div class="TotalBox col-md-5">
                   <app-total-box></app-total-box>
                 </div>
-
+                <div class="histogram col-md-7">
+                  <app-home-histogram></app-home-histogram>
+                </div>
               </div>
             </div>
             <!-- END CONTENT PAGE -->

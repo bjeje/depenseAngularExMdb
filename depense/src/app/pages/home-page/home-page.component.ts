@@ -22,7 +22,6 @@ export class HomePageComponent implements OnInit {
 
 
   sendStatusMenu(newStatusMenu: boolean) {
-    console.log(newStatusMenu);
     this.isMenuOpen = newStatusMenu;
   }
 

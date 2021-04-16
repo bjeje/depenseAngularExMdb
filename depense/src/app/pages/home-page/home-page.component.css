@@ -3,7 +3,8 @@
 }
 
 .back--open {
-  width: 181px;
+  width: 190px;
+  height: -webkit-calc(100% - 15px); /* Chrome, Safari */
   background: #FFFFFF;
 }
 
@@ -64,4 +65,8 @@
 .left-menu {
   min-height: 100%;
   height: auto;
+}
+
+.histogram {
+  margin: 1em 0 1em 0em;
 }

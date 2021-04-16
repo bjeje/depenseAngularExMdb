@@ -2,7 +2,15 @@
     <div class="box__income">
       <div class="row">
         <div class="income">
-          <h3 class="title__total">Recette du mois <i class="material-icons icon-choose">more_horiz</i></h3>
+          <h3 class="title__total">Recette du mois
+            <i class="material-icons icon-choose" mat-button [matMenuTriggerFor]="menu">more_horiz</i>
+          </h3>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Hebdomadaire</button>
+            <button mat-menu-item>Mois</button>
+            <button mat-menu-item>Semestre</button>
+            <button mat-menu-item>Année</button>
+          </mat-menu>
           <div *ngFor="let income of listIncome; let last = last;">
             <p *ngIf="last" class="total__income"> {{income.totalIncome}} €</p>
           </div>
