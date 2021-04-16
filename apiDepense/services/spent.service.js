@@ -169,7 +169,7 @@ module.exports.getSpentByDateAndSubCategory = async ({ dateBegin, dateEnd }) => 
         //"id": {"$push" :"$_id"},
         "category": {"$first": "$category"},
         "count": {"$sum": 1},
-        "amount": {"$sum": "$value"},
+        "value": {"$sum": "$value"},
       },
     }
   ];

@@ -1,0 +1,16 @@
+.box__histogram {
+  height: auto;
+  margin-left: 1.3em;
+  width: 36.1em;
+  background: #FFFFFF;
+  padding: 1em;
+}
+
+.histogram__top {
+
+}
+
+.histogram__title {
+  padding: 1em 2em 1em 1em;
+  color: #07003B;
+}

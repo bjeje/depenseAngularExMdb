@@ -1,0 +1,39 @@
+<div class="box__histogram">
+  <div class="histogram__top row">
+    <h3 class="histogram__title">Statistique du mois</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Entrez une période</mat-label>
+      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+        <input matStartDate formControlName="start" placeholder="Date de début">
+        <input matEndDate formControlName="end" placeholder="Date de fin">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+
+      <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Date de début non Valide</mat-error>
+      <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Date de fin non Valide</mat-error>
+    </mat-form-field>
+  </div>
+  <!--<p>Selected range: {{range.value | json}}</p>-->
+
+  <table>
+    <tr>
+      <td>
+        <ngx-charts-bar-vertical [results]="arrListSpentVariable" [view]="view" [scheme]="colorScheme"
+                                 [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis"
+                                 [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                                 [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitle"
+                                 [legendPosition]="legendPosition" [animations]="animations"
+                                 [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks"
+                                 [trimYAxisTicks]="trimYAxisTicks"
+                                 [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength"
+                                 [maxYAxisTickLength]="maxYAxisTickLength" [yAxisTicks]="yAxisTicks"
+                                 [showDataLabel]="showDataLabel" [barPadding]="barPadding"
+                                 [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
+
+        </ngx-charts-bar-vertical>
+      </td>
+    </tr>
+  </table>
+
+</div>
