@@ -37,7 +37,8 @@
 
 .box__value {
   display: flex;
-  justify-content: space-around;
+
+  justify-content: center;
 }
 
 .value__category {
@@ -46,4 +47,44 @@
 
 .value__amount {
  color: #FF0005;
+}
+
+.value__category:nth-child(1){
+  margin: 0 2em;
+  padding-top: 0.3em;
+  padding-bottom: 1.2em;
+}
+
+.legend {
+  width: 8em;
+  position: relative;
+  top: 1em;
+  right: 3em;
+  background: #f2f2f2;
+  padding: 0.5em;
+  display: flex;
+}
+
+.box__color {
+  padding-top: 0.4em;
+  left: 1.5em;
+}
+
+.box__title {
+  position: relative;
+  right: 1em;
+}
+
+.legend__color {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  margin-bottom: 0.83em;
+
+}
+
+.legend__title {
+  position: relative;
+  left: 2em;
+  line-height: 1.83em;
 }

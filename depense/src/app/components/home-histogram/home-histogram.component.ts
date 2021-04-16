@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {SpentService} from '@app/services/spent-service';
 
+interface spentModel {
+  name : string;
+  value : number;
+}
+
 @Component({
   selector: 'app-home-histogram',
   templateUrl: './home-histogram.component.html',
@@ -10,14 +15,33 @@ import {SpentService} from '@app/services/spent-service';
 
 export class HomeHistogramComponent implements OnInit {
 
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
+
   typeHistogram = "Histogram";
   nameIcon = "bar_chart";
 
   listSpentVariable: any;
-  arrListSpentVariable = [];
+  arrListSpentVariable: any[] = [];
   nbr = 0;
+  /*------COLOR ------*/
+  colorHistogram: any = ['#FF0005', '#E8E8EE', '#E8E8EE', '#E8E8EE', '#E8E8EE', '#E8E8EE','#E8E8EE','#E8E8EE'];
+  colorDiagram: any = ['#FF0005', '#e5644e', '#f18951', '#f9ac5c', '#fdcf71', '\n' +
+  '#fff18f','#cede82','#9fca7a'];
+  /*------ SIZE------*/
+  sizeHistogram: any = [450, 290];
+  sizeDiagram: any = [350, 250];
+  /*------ label Diagram ------*/
+  label: boolean = false;
 
-  view: any = [450, 290];
+
+  /* [legendTitle]="legendTitle"
+      [legendPosition]="legendPosition" [animations]="animations"*/
+  //nameIcon = "bar_chart";//donut_large
+
+  view = this.sizeHistogram;
 
   // options
   legendTitle: string = 'Dépense';
@@ -50,17 +74,12 @@ export class HomeHistogramComponent implements OnInit {
 
   gradient: boolean = false;
   colorScheme = {
-    domain: ['#E8E8EE', '#FF0005']
+    domain: this.colorHistogram,
   };
   schemeType: string = 'ordinal'; // 'ordinal' or 'linear'
   roundEdges: boolean = false;
   barPadding: number = 5
   tooltipDisabled: boolean = false;
-
-  range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl()
-  });
 
   constructor(private spentService: SpentService) {
   }
@@ -79,16 +98,16 @@ export class HomeHistogramComponent implements OnInit {
 
         this.listSpentVariable.forEach((spent: any) => {
           if (spent.category === "spentVariable") {
-
             // @ts-ignore
-            this.arrListSpentVariable.push({name: spent._id, value: spent.value});
+            let newSpent : spentModel = {name: spent._id, value: Math.round(spent.value)};
+            this.arrListSpentVariable.push(newSpent);
             this.nbr++;
             // @ts-ignore
 
           }
         });
         this.arrListSpentVariable = [...this.arrListSpentVariable];
-        console.log(this.listSpentVariable);
+        console.log(this.arrListSpentVariable);
         /*let last = this.listSpentVariable.length;
         this.totalSpentVariable = this.listSpentVariable[last-1];*/
       }
@@ -98,7 +117,19 @@ export class HomeHistogramComponent implements OnInit {
   changeTypeHistogram() {
     this.typeHistogram === "Histogram" ? this.typeHistogram = "Diagram" : this.typeHistogram = "Histogram";
     this.nameIcon === "bar_chart" ? this.nameIcon = "donut_large" : this.nameIcon = "bar_chart";
-    //nameIcon = "bar_chart";//donut_large
+
+    if(this.typeHistogram === "Histogram") {
+      this.colorScheme.domain = this.colorHistogram;
+      this.view = this.sizeHistogram;
+      this.gradient = false;
+      this.legend = false;
+    } else {
+      this.colorScheme.domain = this.colorDiagram;
+      this.view = this.sizeDiagram;
+      this.gradient = true;
+      this.legend = false;
+    }
+
   }
 
   async getSignificantCosts() {

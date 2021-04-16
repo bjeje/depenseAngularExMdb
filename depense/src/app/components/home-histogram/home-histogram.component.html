@@ -22,7 +22,7 @@
   <table>
     <tr>
       <td>
-        <ngx-charts-bar-vertical [results]="arrListSpentVariable" [view]="view" [scheme]="colorScheme"
+        <ngx-charts-bar-vertical *ngIf="typeHistogram === 'Histogram'" [results]="arrListSpentVariable" [view]="view" [scheme]="colorScheme"
                                  [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis"
                                  [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
                                  [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitle"
@@ -33,9 +33,22 @@
                                  [maxYAxisTickLength]="maxYAxisTickLength" [yAxisTicks]="yAxisTicks"
                                  [showDataLabel]="showDataLabel" [barPadding]="barPadding"
                                  [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
-
         </ngx-charts-bar-vertical>
+        <ngx-charts-pie-chart *ngIf="typeHistogram === 'Diagram'" [results]="arrListSpentVariable" [view]="view" [scheme]="colorScheme"
+                                 [schemeType]="schemeType" [gradient]="gradient" [labels]="label"
+                                 [legend]="legend" [legendTitle]="legendTitle"
+                                 [legendPosition]="legendPosition" [animations]="animations"
+                                 [tooltipDisabled]="tooltipDisabled">
+        </ngx-charts-pie-chart>
       </td>
+      <div *ngIf="typeHistogram === 'Diagram'" class="legend">
+        <div class="box__color">
+          <div *ngFor="let color of colorDiagram" class="legend__color" [ngStyle]="{'background': color}"></div>
+        </div>
+        <div class="box__title">
+          <div *ngFor="let spent of arrListSpentVariable" class="legend__title">{{spent.name}}</div>
+        </div>
+      </div>
     </tr>
   </table>
   <div class="divider"></div>
@@ -43,19 +56,14 @@
     <div class="row">
       <h5 class="resum__title">Dépense principale</h5>
       <h5 class="resum__title">Dépense secondaire</h5>
-      <h5 class="resum__title">Dépense tertiare</h5>
+      <h5 class="resum__title">Dépense tertiaire</h5>
     </div>
     <div class="box__value">
-      <p class="value__category">
-        Course | <span class="value__amount">150</span>
-      </p>
-      <p class="value__category">
-        Course | <span class="value__amount">150</span>
-      </p>
-      <p class="value__category">
-        Course | <span class="value__amount">150</span>
-      </p>
-
+      <div *ngFor="let spent of arrListSpentVariable; let i=index" >
+        <p *ngIf="i<3" class="value__category">
+            {{spent.name}} | <span class="value__amount">{{spent.value}}</span>
+        </p>
+      </div>
     </div>
   </div>
 </div>
