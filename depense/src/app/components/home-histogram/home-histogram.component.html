@@ -13,6 +13,9 @@
       <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Date de début non Valide</mat-error>
       <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Date de fin non Valide</mat-error>
     </mat-form-field>
+    <span class="material-icons icon--stats" (click)="changeTypeHistogram()">
+      {{nameIcon}}
+    </span>
   </div>
   <!--<p>Selected range: {{range.value | json}}</p>-->
 
@@ -35,5 +38,24 @@
       </td>
     </tr>
   </table>
+  <div class="divider"></div>
+  <div class="box__resum">
+    <div class="row">
+      <h5 class="resum__title">Dépense principale</h5>
+      <h5 class="resum__title">Dépense secondaire</h5>
+      <h5 class="resum__title">Dépense tertiare</h5>
+    </div>
+    <div class="box__value">
+      <p class="value__category">
+        Course | <span class="value__amount">150</span>
+      </p>
+      <p class="value__category">
+        Course | <span class="value__amount">150</span>
+      </p>
+      <p class="value__category">
+        Course | <span class="value__amount">150</span>
+      </p>
 
+    </div>
+  </div>
 </div>

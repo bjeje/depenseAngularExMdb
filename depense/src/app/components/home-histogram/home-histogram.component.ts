@@ -10,11 +10,14 @@ import {SpentService} from '@app/services/spent-service';
 
 export class HomeHistogramComponent implements OnInit {
 
+  typeHistogram = "Histogram";
+  nameIcon = "bar_chart";
+
   listSpentVariable: any;
   arrListSpentVariable = [];
   nbr = 0;
 
-  view: any = [400, 300];
+  view: any = [450, 290];
 
   // options
   legendTitle: string = 'Dépense';
@@ -58,14 +61,18 @@ export class HomeHistogramComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });
-  constructor(private spentService: SpentService) { }
+
+  constructor(private spentService: SpentService) {
+  }
 
   ngOnInit(): void {
     this.getSpentByDateAndCategory();
+
+    this.getSignificantCosts();
   }
 
   async getSpentByDateAndCategory() {
-    (await this.spentService.getSpentByDateAndCategory("2021-04-01", "2021-04-30" )).subscribe(data => {
+    (await this.spentService.getSpentByDateAndCategory("2021-04-01", "2021-04-30")).subscribe(data => {
       if (data) {
         this.listSpentVariable = data;
         this.listSpentVariable = this.listSpentVariable.body;
@@ -81,9 +88,21 @@ export class HomeHistogramComponent implements OnInit {
           }
         });
         this.arrListSpentVariable = [...this.arrListSpentVariable];
+        console.log(this.listSpentVariable);
         /*let last = this.listSpentVariable.length;
         this.totalSpentVariable = this.listSpentVariable[last-1];*/
       }
     });
   }
+
+  changeTypeHistogram() {
+    this.typeHistogram === "Histogram" ? this.typeHistogram = "Diagram" : this.typeHistogram = "Histogram";
+    this.nameIcon === "bar_chart" ? this.nameIcon = "donut_large" : this.nameIcon = "bar_chart";
+    //nameIcon = "bar_chart";//donut_large
+  }
+
+  async getSignificantCosts() {
+
+  }
+
 }

@@ -1,16 +1,49 @@
 .box__histogram {
   height: auto;
-  margin-left: 1.3em;
+  margin: 0 0 4em 1.3em;
   width: 36.1em;
   background: #FFFFFF;
-  padding: 1em;
-}
-
-.histogram__top {
-
+  padding: 1em 1em 0em 1em;
 }
 
 .histogram__title {
-  padding: 1em 2em 1em 1em;
+  padding: 1em 2em 0.5em 1em;
   color: #07003B;
+}
+
+.icon--stats {
+  padding:  0.3em 0 0 0.3em;
+  font-size: 2em;
+}
+
+.divider {
+  width: 92%;
+  height: 2px;
+  background: #E8E8EE;
+  margin: 0.5em 1.2em 0 1.2em;
+}
+
+.box__resum {
+  margin: 0.7em 2.2em;
+}
+
+.resum__title {
+  margin: 0 0 0.3em 2em;
+  font-size: 0.95em;
+  color: #babac6;
+  font-weight: 400;
+  /*color: #07003B;*/
+}
+
+.box__value {
+  display: flex;
+  justify-content: space-around;
+}
+
+.value__category {
+  color: #babac6;
+}
+
+.value__amount {
+ color: #FF0005;
 }

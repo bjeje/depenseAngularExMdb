@@ -161,6 +161,16 @@ module.exports.getSpentVariableByDate = async ({ dateBegin, dateEnd }) => {
 
 module.exports.getSpentByDateAndSubCategory = async ({ dateBegin, dateEnd }) => {
 
+  function sort_array_by(array, sort, desc) {
+    array.sort(function(a,b) {
+      if (a.sort < b.sort) return -1;
+      if (a.sort > b.sort) return 1;
+      return 0;
+    });
+    if(desc) array.reverse();
+    return array;
+  }
+
   const pipeline = [
     {"$match": {"createdAt": {"$gte": new Date(dateBegin), "$lte": new Date(dateEnd)}}},
     {
@@ -192,9 +202,14 @@ module.exports.getSpentByDateAndSubCategory = async ({ dateBegin, dateEnd }) => 
         });
         return results;
       });
+    spent.sort(function (a, b) {
+      return (b.value < a.value) ? -1 : 1;
+    });
+
     spent.push({totalSpentFixed: totalSpentFixed});
     spent.push({totalSpentVariable: totalSpentVariable});
     spent.push({total: totalSpentFixed + totalSpentVariable});
+
     return spent;
 
   } catch (error) {
