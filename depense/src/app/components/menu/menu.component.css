@@ -3,6 +3,7 @@
   height: 4em;
   background: #07003B;
   display: flex;
+  z-index: 105;
 }
 
 .top__link {
@@ -21,4 +22,18 @@
   justify-content: flex-end;
   margin: 0.5em 4% 0 0;
   color: #FFF;
+}
+
+#toolbarMenu {
+  margin: auto 0 auto 1em;
+  cursor: pointer;
+  color: #FFFFFF;
+}
+#mainToolbar .toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+#mainToolbar .toolbar-icon {
+  cursor: pointer;
+  margin: 0 8px;
 }

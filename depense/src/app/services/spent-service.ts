@@ -34,8 +34,8 @@ export class SpentService {
     return this.http.get(AppComponent.url + this.baseUrl + "/VariableByDate/"+dateBegin+"/"+dateEnd+"'");
   }
 
-  async getSpentByDateAndCategory() {
-    return this.http.get(AppComponent.url + this.baseUrl + "/allByDateCat/:dateBegin/:dateEnd'");
+  async getSpentByDateAndCategory(dateBegin: string, dateEnd: string) {
+    return this.http.get(AppComponent.url + this.baseUrl + "/allByDateCat/"+dateBegin+"/"+dateEnd+"'");
   }
 
   async getSpentById(id: number) {

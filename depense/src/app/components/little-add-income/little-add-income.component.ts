@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { IncomeService } from '../../services/income-service';
-import { Router } from '@angular/router';
 
 
 interface Income {
@@ -48,7 +47,4 @@ export class LittleAddIncomeComponent implements OnInit {
   resetForm() {
     this.incomeForm.reset();
   }
-
-
-
 }
