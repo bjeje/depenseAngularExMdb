@@ -107,7 +107,6 @@ export class HomeHistogramComponent implements OnInit {
           }
         });
         this.arrListSpentVariable = [...this.arrListSpentVariable];
-        console.log(this.arrListSpentVariable);
         /*let last = this.listSpentVariable.length;
         this.totalSpentVariable = this.listSpentVariable[last-1];*/
       }

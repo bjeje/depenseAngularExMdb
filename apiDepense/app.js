@@ -23,13 +23,9 @@ const spentRouter = require('./routes/spent.routes');
 const userRouter = require('./routes/user.routes');
 const incomeRouter = require('./routes/income.routes');
 
-/*app.use('/spent', auth.checkTokenMiddleware, spentRouter);
+app.use('/spent', auth.checkTokenMiddleware, spentRouter);
 app.use('/user', userRouter);
-app.use('/income', auth.checkTokenMiddleware, incomeRouter);*/
-
-app.use('/spent', spentRouter);
-app.use('/user', userRouter);
-app.use('/income', incomeRouter);
+app.use('/income', auth.checkTokenMiddleware, incomeRouter);
 
 app.set('view engine', 'pug');
 

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {HostListener} from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import {sendMessageToMaster} from '@angular/compiler-cli/ngcc/src/execution/cluster/utils';
+import {UserService} from '@app/services/user.services';
+import {AuthService} from '@app/shared/auth.service';
 
 @Component({
   selector: 'app-left-menu',
@@ -10,23 +11,24 @@ import {sendMessageToMaster} from '@angular/compiler-cli/ngcc/src/execution/clus
   styleUrls: ['./left-menu.component.css']
 })
 
-
 export class LeftMenuComponent implements OnInit {
   @Output() sendLeftMenuStatus = new EventEmitter<boolean>();
   options: FormGroup;
 
   isMenuOpen = true;
-  contentMargin = 10;
+  firstname: string = "";
 
   imgMen:any = "assets/img/men.jpg";
   imgWoman:any = "assets/img/woman.jpg";
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private UserService: UserService, private AuthService: AuthService) {
     this.options = fb.group({
       bottom: 0,
       fixed: false,
       top: 0
     });
     this.getScreenHeight();
+
+    this.firstname = this.UserService.getFirstname();
   }
 
   ngOnInit(): void {
@@ -34,12 +36,6 @@ export class LeftMenuComponent implements OnInit {
 
   onToolbarMenuToggle() {
     this.isMenuOpen = !this.isMenuOpen;
-
-    if(!this.isMenuOpen) {
-      this.contentMargin = 0;
-    } else {
-      this.contentMargin = 10;
-    }
     /* Send value menu to parents */
     this.getMenuOpen(this.isMenuOpen);
   }
@@ -61,5 +57,9 @@ export class LeftMenuComponent implements OnInit {
   getMenuOpen(value: boolean) {
     this.sendLeftMenuStatus.emit(value);
   }
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+
+  disconnect() {
+    this.AuthService.logout();
+  }
+
 }
