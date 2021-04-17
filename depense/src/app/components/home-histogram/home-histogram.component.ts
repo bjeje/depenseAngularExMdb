@@ -21,7 +21,7 @@ export class HomeHistogramComponent implements OnInit {
   });
 
   typeHistogram = "Histogram";
-  nameIcon = "bar_chart";
+  nameIcon = "donut_large";
 
   listSpentVariable: any;
   arrListSpentVariable: any[] = [];
@@ -31,7 +31,7 @@ export class HomeHistogramComponent implements OnInit {
   colorDiagram: any = ['#FF0005', '#e5644e', '#f18951', '#f9ac5c', '#fdcf71', '\n' +
   '#fff18f','#cede82','#9fca7a'];
   /*------ SIZE------*/
-  sizeHistogram: any = [450, 290];
+  sizeHistogram: any = [440, 290];
   sizeDiagram: any = [350, 250];
   /*------ label Diagram ------*/
   label: boolean = false;
