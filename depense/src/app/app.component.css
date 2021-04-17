@@ -1,1 +1,7 @@
+main {
+  min-height: 85vh;
+}
 
+.container-fluid {
+  overflow: hidden;
+}

@@ -1,42 +1,146 @@
-.content__menu {
-  padding: 2.5em 1em;
-  background: #FFFFFF;
-  min-height: 85vh;
-  max-height: 100%;
-  width: auto;
-  margin-right: 2.5em;
-}
-
-.photo {
-  height: 4em;
-  border-radius: 50%;
-  padding-right: 0.5em;
-  vertical-align: middle;
+.a {
+  text-underline: none;
 }
 
 .active{
   color: #05F280;
 }
 
-.material-icons {
+#sidenav {
+  position: fixed;
+  top:4em;
+  width: auto;
+  bottom:4em;
+}
+
+#sidenav.menu-close {
+  width: 70px
+}
+
+#sidenav.menu-open {
+  width: auto;
+}
+
+#sidenav .avatar {
+  background-image: url('http://i.pravatar.cc/300');
+  background-size: cover;
+}
+
+#sidenav .mat-list-item-content {
+  padding: 0;
+}
+
+#sidenav .menu-item {
+  width: auto;
+  border-radius: 0;
+  text-align: left;
+  padding: 10px;
+}
+
+#sidenav .menu-item:hover {
+  background: #eee;
+}
+
+#sidenav .menu-item mat-icon {
+  margin-right: 20px;
+  margin-left: 5px;
+}
+
+.menu-item {
+  margin-top: 3em;
+  padding: 1em 2em;
+}
+
+.dash-list h3 {
+  padding: 5px;
+}
+
+.closeSidenavControl, .openSidenavControl {
+  position: fixed;
+  z-index: 100;
+  left: 167px;
+  font-size: 2em;
+  border-radius: 50%;
+  color: #FFFFFF;
+  background: rgba(7, 0, 59, 0.6);
+}
+
+.openSidenavControl {
+  top:400px;
+  left: 55px;
+}
+
+.photo {
   vertical-align: middle;
-  padding-bottom: 0.2em;
+  height: 4em;
+  border-radius: 50%;
+  padding-right: 0.5em;
+
 }
 
-.menu__link--left {
-  margin-top: 3.2em;
+:host /deep/ .mat-list-item-content {
+  padding: 6px!important;
 }
 
-a {
-  font-size: 1.4em;
-  color: #07003B;
+.mat-drawer-container {
+  overflow: unset;
 }
 
-ul {
-  padding-inline-start: 0;
-  list-style-type: none;
+.mat-drawer-content {
+  overflow: unset;
 }
 
-li {
-  line-height: 2.8em;
+.menus {
+  position: sticky!important;
+}
+
+.mat-card {
+  padding: 8px;
+}
+
+.logout {
+  margin-top: 12em;
+}
+
+.logout--style {
+  color: red;
+  font-style: italic;
+}
+
+.box__identity {
+  display: flex;
+}
+
+.identity__name {
+  padding: 1em 1.5em 0 0.5em !important;
+  font-size: 20px;
+}
+
+.identity__role {
+  padding: 0 1.5em 0.5em 0.5em;
+  font-size: 17px;
+  font-style: italic;
+}
+
+.identity__name-close {
+  padding: 1em 0 0 0.2em !important;
+  font-size: 14px;
+}
+
+.identity__role-close {
+  padding: 0 0.2em 0.5em 0.2em;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.card__open {
+  display: flex;
+}
+
+.card__open .identity__name {
+  padding: inherit;
+}
+
+.role__bottom {
+  flex-direction: column;
 }
