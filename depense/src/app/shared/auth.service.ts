@@ -5,12 +5,14 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {AppComponent} from '../app.component';
+import {isObservable} from 'rxjs/internal-compatibility';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
+  error: string = "";
   endpoint: string = '/user';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
@@ -31,17 +33,8 @@ export class AuthService {
   }
 
   // Sign-in
-  signIn(user: User) {
-    return this.http.post<any>(AppComponent.url+`${this.endpoint}/signin`, user)
-      .subscribe((res: any) => {
-        //console.table(res);
-        localStorage.setItem('Token', res.body)
-        //this.getUserProfile(res._id).subscribe((res) => {
-          //this.currentUser = res;
-          this.router.navigate([ '/home' ]);
-          //this.router.navigate(['user-profile/' + res.msg._id]);
-        //})
-      })
+  async signIn(user: User) {
+     return this.http.post<any>(AppComponent.url + `${this.endpoint}/signin`, user)
   }
 
   getToken() {
@@ -83,5 +76,9 @@ export class AuthService {
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(msg);
+  }
+
+  getError() {
+    return this.error;
   }
 }

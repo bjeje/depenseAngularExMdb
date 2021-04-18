@@ -13,10 +13,6 @@ export class UserService {
 
   constructor(private http: HttpClient, private AuthService: AuthService) { }
 
-  async getTests() {
-    return this.http.get(AppComponent.url + this.baseUrl);
-  }
-
   async getUser() {
     return this.http.get(AppComponent.url + this.baseUrl);
   }

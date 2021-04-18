@@ -3,7 +3,8 @@ a {
 }
 
 .login {
-  min-width: 400px;
+  min-width: 24em;
+  max-width: 35em;
   background: #FFFFFF;
   margin: 15vh auto 23.5vh auto;
   width: 40%;
@@ -34,12 +35,16 @@ a {
   height: 6em;
 }
 
+.box__input_password {
+  height: 4em;
+}
+
 .mat-form-field {
   line-height: 1em;
 }
 
 .form__submit {
-  margin: 0 auto 0 auto;
+  margin: 2em auto 0 auto;
 }
 
 .submit__btn {
@@ -48,4 +53,12 @@ a {
   border-radius: 1em;
   outline: none;
   background: #05F280;
+}
+
+.error--msg {
+  line-height: 1.3em;
+  transform: translateY(10px);
+  margin-left: 0.5em;
+  font-size: 88%;
+  color: #FF0005;
 }

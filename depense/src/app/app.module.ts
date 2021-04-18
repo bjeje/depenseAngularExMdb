@@ -32,7 +32,6 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { LoginComponent } from './components/login/login.component';
-import { UserComponent } from './components/user/user.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -53,7 +52,6 @@ import { HomeHistogramComponent } from './components/home-histogram/home-histogr
     FooterComponent,
     RegisterFormComponent,
     LoginComponent,
-    UserComponent,
     LoginPageComponent,
     SignupPageComponent,
     HomePageComponent,

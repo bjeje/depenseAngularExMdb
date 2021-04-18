@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '@app/services/user.services';
 import { AuthService } from './../../shared/auth.service';
@@ -11,25 +11,24 @@ import { AuthService } from './../../shared/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  loginError: string = "";
+
   constructor(private User: UserService, private router: Router, private AuthService: AuthService) {}
     loginForm = new FormGroup({
-    login: new FormControl(''),
-    password: new FormControl('')
+    login: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   });
 
     async signin() {
-    (await this.AuthService.signIn(this.loginForm.value));
+    (await this.AuthService.signIn(this.loginForm.value)).subscribe((res: any) => {
 
-  /*async signin() {
-    (await this.User.signIn(this.loginForm.value)).subscribe(
-      (data: any) => {
-        //let token = data.body;
-        console.log(data);
-        //localStorage.setItem('Token', token);
-
+        localStorage.setItem('Token', res.body)
+        this.router.navigate(['/home']);
       },
-    );*/
-    /*this.User.signin({login: login, password: password})*/
+      (error) => {
+        this.loginError = "Login ou Mot de passe incorrect !";
+      })
+
   }
   ngOnInit() {}
 
