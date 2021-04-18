@@ -31,11 +31,13 @@ export class RegisterFormComponent implements OnInit {
     name: new FormControl(''),
     firstname: new FormControl(''),
     city: new FormControl(''),
+    postalCode: new FormControl(''),
     birthdate: new FormControl(''),
   });
   ngOnInit() {}
 
     async signup() {
+    console.log(this.registerForm.value.birthdate);
       (await this.userService.signup(this.registerForm.value)).subscribe(
         (data: any) => {
           if(data) {
