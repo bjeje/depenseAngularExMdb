@@ -112,26 +112,26 @@ exports.validate = (method) => {
         case 'createUser': {
             //const checkDate = verifyDateMinMax();
             return [
-                body('login', "Login invalide").exists().isString().isLength({min:6 , max: 30}),
-                body('password', "Mot de passe invalide").exists().isString().isLength({min:8 , max:30}),
-                body('name').optional({checkFalsy: true, nullable: true}).isString().not().isAlphanumeric()
-                    .isLength({max: 60}).withMessage('"Nom invalide"'),
-                body('firstname').optional({checkFalsy: true, nullable: true}).isString().not().isAlphanumeric()
-                    .isLength({max: 60}).withMessage('Prénom invalide'),
-                body('email', 'Email invalide').exists().isEmail(),
-                body('city').optional({checkFalsy: true, nullable: true}).isString().not().isAlphanumeric()
-                    .isLength({max: 60}).withMessage('Ville invalide'),
+                body('login', "Login invalide !").exists().isString().isLength({min:6 , max: 30}),
+                body('password', "Mot de passe invalide !").exists().isString().isLength({min:8 , max:30}),
+                body('name').optional({checkFalsy: true, nullable: true}).isString()
+                    .isLength({max: 60}).isAlpha().withMessage('Nom invalide !'),
+                body('firstname').optional({checkFalsy: true, nullable: true}).isString()
+                    .isLength({max: 60}).isAlpha().withMessage('Prénom invalide !'),
+                body('email', 'Email invalide!').exists().isEmail(),
+                body('city').optional({checkFalsy: true, nullable: true}).isString()
+                    .isLength({max: 60}).matches(/^[A-Za-z ]+$/).withMessage('Ville invalide !'),
                 body('postalCode').optional({checkFalsy: true, nullable: true})
-                    .isPostalCode('FR').withMessage('Code postal Invalide'),
+                    .isPostalCode('FR').withMessage('Code postal invalide !'),
                 body('birthdate').optional({checkFalsy: true, nullable: true})
-                    .isISO8601().withMessage('Date de naissance Invalide')
+                    .isISO8601().withMessage('Date de naissance invalide !')
             ]
         }
 
         case 'signIn': {
             return [
-                body('login', "Login invalide").exists().isString().isLength({min:6 , max: 30}),
-                body('password', "Mot de passe invalide").exists().isString().isLength({min:8 , max:30})
+                body('login', "Login invalide !").exists().isString().isLength({min:6 , max: 30}),
+                body('password', "Mot de passe invalide !").exists().isString().isLength({min:8 , max:30})
             ]
         }
     }
