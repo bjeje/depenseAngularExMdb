@@ -19,7 +19,8 @@ export class ActualAccountComponent implements OnInit {
   ngOnInit(): void {
     this.totalStay = [{total: null}];
     this.getIncomeByDate();
-    this.getSpentFixedByDate();
+    //this.getSpentFixedByDate();
+    this.getSpentFixed();
     this.getSpentVariableByDate();
   }
 
@@ -35,8 +36,20 @@ export class ActualAccountComponent implements OnInit {
     });
   }
 
-  async getSpentFixedByDate():Promise<void> {
+  /*async getSpentFixedByDate():Promise<void> {
     (await this.spentService.getSpentFixedByDate("2021-04-01", "2021-04-30")).subscribe(data => {
+      if (data) {
+        this.listSpentFixed = data;
+        this.listSpentFixed = this.listSpentFixed.body;
+        let nbrLastFixed = this.listSpentFixed.length;
+        this.listSpentFixed = this.listSpentFixed[nbrLastFixed-1];
+        this.totalStay[0].total -= this.listSpentFixed.totalSpentFixed;
+      }
+    });
+  }*/
+
+  async getSpentFixed():Promise<void> {
+    (await this.spentService.getSpentFixed()).subscribe(data => {
       if (data) {
         this.listSpentFixed = data;
         this.listSpentFixed = this.listSpentFixed.body;

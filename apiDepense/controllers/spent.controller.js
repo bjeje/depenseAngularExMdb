@@ -105,6 +105,20 @@ module.exports.getNineSpentFixed = async (req, res) => {
   return res.status(response.status).send(response);
 }
 
+module.exports.getSpentFixed = async (req, res) => {
+  let response = { ...constants.defaultServerResponse };
+  try {
+    const responseFromService = await spentService.getSpentFixed(req.params);
+    response.status = 200;
+    response.message = constants.spentMessage.SPENT_FETCHED;
+    response.body = responseFromService;
+  } catch (error) {
+    console.log('Something went wrong: Controller: getSpentFixedByDate', error);
+    response.message = error.message;
+  }
+  return res.status(response.status).send(response);
+}
+
 module.exports.getSpentFixedByDate = async (req, res) => {
   let response = { ...constants.defaultServerResponse };
   try {

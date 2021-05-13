@@ -4,6 +4,7 @@ const router = express.Router();
 const spentController = require('../controllers/spent.controller')
 
 router.get('/', spentController.getSpent);
+router.get('/Fixed', spentController.getSpentFixed);
 router.get('/FixedByDate/:dateBegin/:dateEnd', spentController.getSpentFixedByDate);
 router.get('/VariableByDate/:dateBegin/:dateEnd', spentController.getSpentVariableByDate);
 router.get('/allByDateCat/:dateBegin/:dateEnd', spentController.getSpentByDateAndSubCategory);

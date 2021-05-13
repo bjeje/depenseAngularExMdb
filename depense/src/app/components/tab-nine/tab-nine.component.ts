@@ -3,6 +3,7 @@ import {IncomeService} from "../../services/income-service";
 import {SpentService} from "../../services/spent-service";
 import * as dayjs from 'dayjs'
 import 'dayjs/locale/fr';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 dayjs.locale('fr');
 
@@ -11,21 +12,26 @@ dayjs.locale('fr');
   templateUrl: './tab-nine.component.html',
   styleUrls: ['./tab-nine.component.css']
 })
-/*@NgModule({
-  imports: [
-      MatTabsModule,
-  ],
-  declarations: [
-  ],
-  providers: []
-})*/
+
 export class TabNineComponent implements OnInit {
 
   listIncome: any;
   listSpentFixed: any;
   listSpentVariable: any;
+  isSmallSize: boolean = false;
 
-  constructor(private incomeService: IncomeService, private spentService: SpentService) {}
+  constructor(private incomeService: IncomeService, private spentService: SpentService,
+  private breakpointObserver: BreakpointObserver) {
+
+    breakpointObserver.observe([
+      Breakpoints.HandsetLandscape,
+
+    ]).subscribe(result => {
+      if (result.matches) {
+        //this.isSmallSize = true;
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.getNineIncome();

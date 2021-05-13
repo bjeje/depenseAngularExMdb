@@ -116,6 +116,30 @@ module.exports.getNineSpentFixed = async () => {
   }
 }
 
+module.exports.getSpentFixed = async () => {
+  try {
+    let totalSpentFixed = 0;
+    let spent = await Spent.find({category: "spentFixed"});
+    if (!spent) {
+      throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
+    }
+    spent.forEach(spent =>{
+        if(spent.sub_category === "Impots") {
+          let nbrToArround = Math.round((spent.value/12)*1000000)/1000000;
+          totalSpentFixed += Math.round(nbrToArround * 100)/100;
+        } else {
+          totalSpentFixed += spent.value;
+        }
+
+        });
+    spent.push({totalSpentFixed : totalSpentFixed});
+    return spent;
+  } catch (error) {
+    console.log('Something went wrong: Service: getSpentFixedByDate', error);
+    throw new Error(error);
+  }
+}
+
 module.exports.getSpentFixedByDate = async ({ dateBegin, dateEnd }) => {
   try {
     let totalSpentFixed = 0;

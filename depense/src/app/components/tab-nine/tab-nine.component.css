@@ -49,3 +49,9 @@
   position: relative;
   top: 0.8em;
 }
+
+@media (max-width: 1350px) {
+  .tabOption {
+    display: none;
+  }
+}

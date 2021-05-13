@@ -24,6 +24,11 @@ export class SpentService {
     return this.http.get(AppComponent.url + this.baseUrl + "/nineVariable");
   }
 
+  async getSpentFixed() {
+    //return this.http.get(AppComponent.url + this.baseUrl + "/allByDate/:dateBegin/:dateEnd'");
+    return this.http.get(AppComponent.url + this.baseUrl + "/Fixed/");
+  }
+
   async getSpentFixedByDate(dateBegin: string, dateEnd: string) {
     //return this.http.get(AppComponent.url + this.baseUrl + "/allByDate/:dateBegin/:dateEnd'");
     return this.http.get(AppComponent.url + this.baseUrl + "/FixedByDate/"+dateBegin+"/"+dateEnd+"'");
