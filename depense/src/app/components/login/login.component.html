@@ -9,11 +9,12 @@
         <input formControlName="login" ng-model="user.login" class="input__login" type="text" matInput placeholder="" required>
       </mat-form-field>
     </p>
-    <p class="box__input_login">
+    <p class="box__input_password">
       <mat-form-field class="login__input" appearance="outline">
         <mat-label>Mot de passe</mat-label>
         <input formControlName="password" ng-model="user.password" class="input__login" type="password" matInput placeholder="" required>
       </mat-form-field>
+      <p class="error--msg" *ngIf="loginError">{{loginError}}
     </p>
     <p class="form__submit">
       <button class="submit__btn" type="submit">Connection</button>

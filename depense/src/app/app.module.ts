@@ -20,7 +20,7 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ErrorInterceptor } from './helpers/error.interceptor';
+import { AuthInterceptor } from './shared/authconfig.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,9 +31,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 import { LoginComponent } from './components/login/login.component';
-import { UserComponent } from './components/user/user.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -54,7 +52,6 @@ import { HomeHistogramComponent } from './components/home-histogram/home-histogr
     FooterComponent,
     RegisterFormComponent,
     LoginComponent,
-    UserComponent,
     LoginPageComponent,
     SignupPageComponent,
     HomePageComponent,
@@ -91,7 +88,7 @@ import { HomeHistogramComponent } from './components/home-histogram/home-histogr
     NgxChartsModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

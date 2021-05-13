@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '@app/services/user.services';
+import { AuthService } from './../../shared/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,30 +11,24 @@ import { UserService } from '@app/services/user.services';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private User: UserService, private router: Router) {}
+  loginError: string = "";
+
+  constructor(private User: UserService, private router: Router, private AuthService: AuthService) {}
     loginForm = new FormGroup({
-    login: new FormControl(''),
-    password: new FormControl('')
+    login: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   });
 
-  async signin() {
-    (await this.User.signin(this.loginForm.value)).subscribe(
-      (data: any) => {
-        let token = data.body;
-        console.log(data);
-        localStorage.setItem('Token', token);
-        this.router.navigate([ '/home' ]);
+    async signin() {
+    (await this.AuthService.signIn(this.loginForm.value)).subscribe((res: any) => {
+
+        localStorage.setItem('Token', res.body)
+        this.router.navigate(['/home']);
       },
-      /*(err: HttpErrorResponse) => {
-        console.log(err.error);
-        if (err.error.msg) {
-          this.snackBar.open(err.error.msg, 'Undo');
-        } else {
-          this.snackBar.open('Something Went Wrong!');
-        }
-      }*/
-    );
-    /*this.User.signin({login: login, password: password})*/
+      (error) => {
+        this.loginError = "Login ou Mot de passe incorrect !";
+      })
+
   }
   ngOnInit() {}
 
