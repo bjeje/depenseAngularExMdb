@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const SpentSchema  = new mongoose.Schema({
     category: String,
     sub_category: String,
+    sub_catName: String,
     owner: String,
+    mentualize: { type: Boolean, default: false},
     value: Number,
     nbrUpdated: Number,
     oldRecords: [{
