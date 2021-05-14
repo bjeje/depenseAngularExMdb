@@ -70,3 +70,15 @@
 .histogram {
   margin: 1em 0 1em 0em;
 }
+
+/*--------------- @media ------------------*/
+
+@media (max-width: 1530px) {
+  .content__page--close {
+    margin: 0 11% 0 9%!important;
+  }
+
+  .content__page--open {
+    margin: 0 12% 0 2%!important;
+  }
+}

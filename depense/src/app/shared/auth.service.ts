@@ -5,7 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {AppComponent} from '../app.component';
-import {isObservable} from 'rxjs/internal-compatibility';
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +39,12 @@ export class AuthService {
 
   getToken() {
     return localStorage.getItem('Token');
+  }
+
+  getIdUser() {
+    // @ts-ignore
+    let decoded = jwt_decode(localStorage.getItem('Token'));
+    return decoded._id;
   }
 
   get isLoggedIn(): boolean {

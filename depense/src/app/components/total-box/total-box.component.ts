@@ -20,12 +20,13 @@ export class TotalBoxComponent implements OnInit {
 
   ngOnInit(): void {
     this.getIncomeByDate();
-    this.getSpentFixedByDate();
+    //this.getSpentFixedByDate();
+    this.getSpentFixed();
     this.getSpentVariableByDate();
   }
 
   async getIncomeByDate() {
-    (await this.incomeService.getIncomeByDate("2021-04-01", "2021-04-30")).subscribe(data => {
+    (await this.incomeService.getIncomeByDate("2021-05-01", "2021-05-30")).subscribe(data => {
       if (data) {
         this.listIncome = data;
         this.listIncome = this.listIncome.body;
@@ -33,17 +34,29 @@ export class TotalBoxComponent implements OnInit {
     });
   }
 
-  async getSpentFixedByDate() {
+  async getSpentFixed() {
+    (await this.spentService.getSpentFixed()).subscribe(data => {
+      if (data) {
+        this.listSpentFixed = data;
+
+        //console.log(this.listSpentFixed.body.totalSpentFixed);
+
+        this.listSpentFixed = this.listSpentFixed.body;
+      }
+    });
+  }
+
+  /*async getSpentFixedByDate() {
     (await this.spentService.getSpentFixedByDate("2021-04-01", "2021-04-30")).subscribe(data => {
       if (data) {
         this.listSpentFixed = data;
         this.listSpentFixed = this.listSpentFixed.body;
       }
     });
-  }
+  }*/
 
   async getSpentVariableByDate() {
-    (await this.spentService.getSpentVariableByDate("2021-04-01", "2021-04-30" )).subscribe(data => {
+    (await this.spentService.getSpentVariableByDate("2021-05-01", "2021-05-30" )).subscribe(data => {
       if (data) {
         this.listSpentVariable = data;
         this.listSpentVariable = this.listSpentVariable.body;

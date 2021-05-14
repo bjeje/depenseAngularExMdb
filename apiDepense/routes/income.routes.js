@@ -4,9 +4,9 @@ const router = express.Router();
 const Controller = require('../controllers/income.controller')
 
 router.get('/', Controller.getIncome);
-router.get('/nine', Controller.getNineIncome);
-router.get('/allByDate/:dateBegin/:dateEnd', Controller.getIncomeByDate);
-router.get('/allByDateCat/:dateBegin/:dateEnd', Controller.getIncomeByDateAndCategory);
+router.get('/nine/:owner', Controller.getNineIncome);
+router.get('/allByDate/:dateBegin/:dateEnd/:owner', Controller.getIncomeByDate);
+router.get('/allByDateCat/:dateBegin/:dateEnd/:owner', Controller.getIncomeByDateAndCategory);
 router.get('/:id', Controller.getIncomeById);
 router.post('/', Controller.createIncome);
 router.put('/:id', Controller.updateIncome);
