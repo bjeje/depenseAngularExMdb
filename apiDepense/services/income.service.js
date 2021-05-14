@@ -2,9 +2,9 @@ const Income = require("../models/incomeModel");
 const { checkObjectId } = require('../helper/dbHelper');
 const constants = require('../constants');
 
-module.exports.getIncome = async function () {
+module.exports.getIncome = async function (owner) {
     try {
-        return Income.find();
+        return Income.find({ owner : owner.owner });
     } catch (e) {
         throw Error(e)
     }
@@ -70,9 +70,9 @@ module.exports.updateIncome = async ({ id, updateInfo }) => {
     }
 }
 
-module.exports.getNineIncome = async () => {
+module.exports.getNineIncome = async (owner) => {
     try {
-        let spent = await Income.find().sort({_id: -1}).limit(9);
+        let spent = await Income.find({ owner: owner.owner }).sort({_id: -1}).limit(9);
         if (!spent) {
             throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
         }
@@ -83,13 +83,13 @@ module.exports.getNineIncome = async () => {
     }
 }
 
-module.exports.getIncomeByDate = async ({ dateBegin, dateEnd }) => {
+module.exports.getIncomeByDate = async ({ dateBegin, dateEnd, owner }) => {
     try {
         let totalIncome = 0;
         let income = await Income.find({createdAt : {
                 $gte: new Date(dateBegin),
                 $lt: new Date(dateEnd)
-            } });
+            }, owner });
         if (!income) {
             throw new Error(constants.incomeMessage.INCOME_NOT_FOUND);
         }
@@ -103,10 +103,10 @@ module.exports.getIncomeByDate = async ({ dateBegin, dateEnd }) => {
     }
 }
 
-module.exports.getIncomeByDateAndCategory = async ({ dateBegin, dateEnd }) => {
+module.exports.getIncomeByDateAndCategory = async ({ dateBegin, dateEnd, owner }) => {
 
     const pipeline = [
-        {"$match": {"createdAt": {"$gte": new Date(dateBegin), "$lte": new Date(dateEnd)}}},
+        {"$match": {"createdAt": {"$gte": new Date(dateBegin), "$lte": new Date(dateEnd)}, owner: owner.owner}},
         {
             "$group": {
                 "_id": "$category",

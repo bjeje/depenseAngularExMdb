@@ -90,9 +90,9 @@ module.exports.updateSpent = async ({ id, updateInfo }) => {
   }
 }
 
-module.exports.getNineSpentVariable = async () => {
+module.exports.getNineSpentVariable = async (owner) => {
   try {
-    let spent = await Spent.find({"category": "spentVariable" }).sort({_id: -1}).limit(9);
+    let spent = await Spent.find({"category": "spentVariable", owner: owner.owner }).sort({_id: -1}).limit(9);
     if (!spent) {
       throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
     }
@@ -103,9 +103,10 @@ module.exports.getNineSpentVariable = async () => {
   }
 }
 
-module.exports.getNineSpentFixed = async () => {
+module.exports.getNineSpentFixed = async (owner) => {
+
   try {
-    let spent = await Spent.find({"category": "spentFixed" }).sort({_id: -1}).limit(9);
+    let spent = await Spent.find({"category": "spentFixed", owner: owner.owner }).sort({_id: -1}).limit(9);
     if (!spent) {
       throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
     }
@@ -116,10 +117,10 @@ module.exports.getNineSpentFixed = async () => {
   }
 }
 
-module.exports.getSpentFixed = async () => {
+module.exports.getSpentFixed = async (owner) => {
   try {
     let totalSpentFixed = 0;
-    let spent = await Spent.find({category: "spentFixed"});
+    let spent = await Spent.find({category: "spentFixed", owner : owner.owner});
     if (!spent) {
       throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
     }
@@ -140,10 +141,10 @@ module.exports.getSpentFixed = async () => {
   }
 }
 
-module.exports.getSpentFixedByDate = async ({ dateBegin, dateEnd }) => {
+module.exports.getSpentFixedByDate = async ({ dateBegin, dateEnd, owner }) => {
   try {
     let totalSpentFixed = 0;
-    let spent = await Spent.find({category: "spentFixed",createdAt : {
+    let spent = await Spent.find({category: "spentFixed", owner: owner.owner, createdAt : {
       $gte: new Date(dateBegin),
       $lt: new Date(dateEnd)
     } });
@@ -160,10 +161,10 @@ module.exports.getSpentFixedByDate = async ({ dateBegin, dateEnd }) => {
   }
 }
 
-module.exports.getSpentVariableByDate = async ({ dateBegin, dateEnd }) => {
+module.exports.getSpentVariableByDate = async ({ dateBegin, dateEnd, owner }) => {
   try {
     let totalSpentVariable = 0;
-    let spent = await Spent.distinct("sub_category").find({category: "spentVariable",createdAt : {
+    let spent = await Spent.distinct("sub_category").find({category: "spentVariable", owner, createdAt : {
         $gte: new Date(dateBegin),
         $lt: new Date(dateEnd)
       } });
@@ -183,7 +184,7 @@ module.exports.getSpentVariableByDate = async ({ dateBegin, dateEnd }) => {
   }
 }
 
-module.exports.getSpentByDateAndSubCategory = async ({ dateBegin, dateEnd }) => {
+module.exports.getSpentByDateAndSubCategory = async ({ dateBegin, dateEnd, owner }) => {
 
   function sort_array_by(array, sort, desc) {
     array.sort(function(a,b) {
@@ -196,7 +197,7 @@ module.exports.getSpentByDateAndSubCategory = async ({ dateBegin, dateEnd }) => 
   }
 
   const pipeline = [
-    {"$match": {"createdAt": {"$gte": new Date(dateBegin), "$lte": new Date(dateEnd)}}},
+    {"$match": {"createdAt": {"$gte": new Date(dateBegin), "$lte": new Date(dateEnd)}, owner}},
     {
       "$group": {
         "_id": "$sub_category",

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {AppComponent} from '../app.component';
+import { UserService } from './user.services';
 
 @Injectable({
   providedIn: 'root'
@@ -8,28 +9,35 @@ import {AppComponent} from '../app.component';
 
 export class IncomeService {
 
+
   baseUrl = '/income';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private User: UserService) { }
 
   async getIncome() {
-    return this.http.get(AppComponent.url + this.baseUrl);
+    let owner = this.User.getIdUserConnected();
+    return this.http.get(AppComponent.url + this.baseUrl + "/" + `${owner}`);
   }
 
   async getNineIncome() {
-    return this.http.get(AppComponent.url + this.baseUrl + "/nine");
+    let owner = this.User.getIdUserConnected();
+    //console.log(owner);
+    return this.http.get(AppComponent.url + this.baseUrl + "/nine" + "/" + `${owner}`);
   }
 
   async getIncomeByDate(dateBegin: string, dateEnd: string) {
-    return this.http.get(AppComponent.url + this.baseUrl + "/allByDate/"+dateBegin+"/"+dateEnd+"'");
+    let owner = this.User.getIdUserConnected();
+    return this.http.get(AppComponent.url + this.baseUrl + "/allByDate/"+dateBegin+"/"+dateEnd+"/"+ `${owner}`);
   }
 
   async getIncomeByDateAndCategory() {
-    return this.http.get(AppComponent.url + this.baseUrl + "/allByDateCat/:dateBegin/:dateEnd'");
+    let owner = this.User.getIdUserConnected();
+    return this.http.get(AppComponent.url + this.baseUrl + "/allByDateCat/:dateBegin/:dateEnd/" + `${owner}`);
   }
 
   async getIncomeById(id: number) {
-    return this.http.get(AppComponent.url + this.baseUrl + `${id}`);
+    let owner = this.User.getIdUserConnected();
+    return this.http.get(AppComponent.url + this.baseUrl + `${id}` + "/" + `${owner}`);
   }
 
   async createIncome(income: object) {

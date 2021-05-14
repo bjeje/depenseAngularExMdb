@@ -3,13 +3,13 @@ const router = express.Router();
 
 const spentController = require('../controllers/spent.controller')
 
-router.get('/', spentController.getSpent);
-router.get('/Fixed', spentController.getSpentFixed);
-router.get('/FixedByDate/:dateBegin/:dateEnd', spentController.getSpentFixedByDate);
-router.get('/VariableByDate/:dateBegin/:dateEnd', spentController.getSpentVariableByDate);
-router.get('/allByDateCat/:dateBegin/:dateEnd', spentController.getSpentByDateAndSubCategory);
-router.get('/nineFixed', spentController.getNineSpentFixed);
-router.get('/nineVariable', spentController.getNineSpentVariable);
+router.get('/:owner', spentController.getSpent);
+router.get('/Fixed/:owner', spentController.getSpentFixed);
+router.get('/FixedByDate/:dateBegin/:dateEnd/:owner', spentController.getSpentFixedByDate);
+router.get('/VariableByDate/:dateBegin/:dateEnd/:owner', spentController.getSpentVariableByDate);
+router.get('/allByDateCat/:dateBegin/:dateEnd/:owner', spentController.getSpentByDateAndSubCategory);
+router.get('/nineFixed/:owner', spentController.getNineSpentFixed);
+router.get('/nineVariable/:owner', spentController.getNineSpentVariable);
 router.get('/:id', spentController.getSpentById);
 router.post('/', spentController.createSpent);
 router.put('/:id', spentController.updateSpent);

@@ -25,7 +25,7 @@ export class ActualAccountComponent implements OnInit {
   }
 
   async getIncomeByDate():Promise<void> {
-    (await this.incomeService.getIncomeByDate("2021-04-01", "2021-04-30")).subscribe(data => {
+    (await this.incomeService.getIncomeByDate("2021-05-01", "2021-05-30")).subscribe(data => {
       if (data) {
         this.listIncome = data;
         this.listIncome = this.listIncome.body;
@@ -61,7 +61,7 @@ export class ActualAccountComponent implements OnInit {
   }
 
   async getSpentVariableByDate():Promise<void> {
-    (await this.spentService.getSpentVariableByDate("2021-04-01", "2021-04-30" )).subscribe(data => {
+    (await this.spentService.getSpentVariableByDate("2021-05-01", "2021-05-30" )).subscribe(data => {
       if (data) {
         this.listSpentVariable = data;
         this.listSpentVariable = this.listSpentVariable.body;

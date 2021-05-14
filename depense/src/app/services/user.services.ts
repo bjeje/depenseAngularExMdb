@@ -41,6 +41,11 @@ export class UserService {
     return this.parseJwt(this.AuthService.getToken()).firstname;
   }
 
+  getIdUserConnected() {
+    return this.parseJwt(this.AuthService.getToken()).id;
+    //return this.AuthService.getIdUser();
+  }
+
   getLogin (){
     return this.parseJwt(this.AuthService.getToken()).login;
   }

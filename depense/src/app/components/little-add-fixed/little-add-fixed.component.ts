@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SpentService } from '../../services/spent-service';
+import { UserService } from '../../services/user.services';
 
 interface Spent {
   value: string;
@@ -31,7 +32,7 @@ export class LittleAddFixedComponent implements OnInit {
     {value: 'Banque', viewValue: 'Banque'},
   ];
 
-  constructor(private formBuilder: FormBuilder, private Spent: SpentService) { }
+  constructor(private formBuilder: FormBuilder, private Spent: SpentService, private User: UserService) { }
 
   ngOnInit(): void {
 
@@ -39,6 +40,7 @@ export class LittleAddFixedComponent implements OnInit {
 
   async addCategory() {
     this.spentForm.value.sub_category = this.spentForm.value.sub_category.value;
+    this.spentForm.value.owner = this.User.getIdUserConnected();
 
     (await this.Spent.createSpent(this.spentForm.value)).subscribe(
       (data: any) => {

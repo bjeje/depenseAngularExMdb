@@ -91,7 +91,7 @@ export class HomeHistogramComponent implements OnInit {
   }
 
   async getSpentByDateAndCategory() {
-    (await this.spentService.getSpentByDateAndCategory("2021-04-01", "2021-04-30")).subscribe(data => {
+    (await this.spentService.getSpentByDateAndCategory("2021-05-01", "2021-05-30")).subscribe(data => {
       if (data) {
         this.listSpentVariable = data;
         this.listSpentVariable = this.listSpentVariable.body;
