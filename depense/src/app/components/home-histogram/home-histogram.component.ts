@@ -14,7 +14,9 @@ interface spentModel {
 })
 
 export class HomeHistogramComponent implements OnInit {
-
+  date = new Date();
+  firstDay = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
+  lastDay = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0);
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -91,7 +93,7 @@ export class HomeHistogramComponent implements OnInit {
   }
 
   async getSpentByDateAndCategory() {
-    (await this.spentService.getSpentByDateAndCategory("2021-05-01", "2021-05-30")).subscribe(data => {
+    (await this.spentService.getSpentByDateAndCategory(this.firstDay, this.lastDay)).subscribe(data => {
       if (data) {
         this.listSpentVariable = data;
         this.listSpentVariable = this.listSpentVariable.body;
