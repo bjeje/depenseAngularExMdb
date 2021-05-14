@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
-const User = require("./userModel");
-const Schema = mongoose.Schema;
 
-const IncomeSchema  = new mongoose.Schema({
-    category: String,
+const EndMonthSchema  = new mongoose.Schema({
     owner: String,
     type_account: { type: String, default: "Compte chèque" },
     value: Number,
+    percentage_stay: Number,
 }, {
     timestamps: true,
     toObject: {
@@ -19,6 +17,6 @@ const IncomeSchema  = new mongoose.Schema({
     }
 });
 
-const Income = mongoose.model('Income', IncomeSchema)
+const EndMonth = mongoose.model('EndMonth', EndMonthSchema)
 
-module.exports = Income;
+module.exports = EndMonth;

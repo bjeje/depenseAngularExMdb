@@ -6,6 +6,13 @@ module.exports = {
     forbiddenResponse: {
         message: "You don't have permission!",
     },
+    endMonthMessage: {
+        END_MONTH_CREATED: 'End month Created Successfully',
+        END_MONTH_FETCHED: 'End month Fetched Successfully',
+        END_MONTH_UPDATED: 'End month Updated Successfully',
+        END_MONTH_DELETED: 'End month Deleted Successfully',
+        END_MONTH_NOT_FOUND: 'End month Not Found'
+    },
     spentMessage: {
         SPENT_CREATED: 'Spent Created Successfully',
         SPENT_FETCHED: 'Spent Fetched Successfully',

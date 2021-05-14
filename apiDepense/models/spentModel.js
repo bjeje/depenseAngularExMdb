@@ -5,6 +5,7 @@ const SpentSchema  = new mongoose.Schema({
     sub_category: String,
     sub_catName: String,
     owner: String,
+    type_account: { type: String, default: "Compte chèque" },
     mentualize: { type: Boolean, default: false},
     value: Number,
     nbrUpdated: Number,
