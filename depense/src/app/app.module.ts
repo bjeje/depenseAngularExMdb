@@ -44,6 +44,7 @@ import { LittleAddFixedComponent } from './components/little-add-fixed/little-ad
 import { LittleAddIncomeComponent } from './components/little-add-income/little-add-income.component';
 import { LittleAddVariableComponent } from './components/little-add-variable/little-add-variable.component';
 import { HomeHistogramComponent } from './components/home-histogram/home-histogram.component';
+import { LittleAddEndMonthComponent } from './components/little-add-end-month/little-add-end-month.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { HomeHistogramComponent } from './components/home-histogram/home-histogr
     LittleAddFixedComponent,
     LittleAddIncomeComponent,
     LittleAddVariableComponent,
-    HomeHistogramComponent
+    HomeHistogramComponent,
+    LittleAddEndMonthComponent
   ],
   imports: [
     HttpClientModule,

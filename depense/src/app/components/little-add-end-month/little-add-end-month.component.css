@@ -1,0 +1,26 @@
+.box__little {
+  background: #FFFFFF;
+  padding: 0 3em;
+  width: 24.3em;
+}
+
+.submit__add {
+  margin-left: 58%;
+  height: 2.2em;
+  color: #FFFFFF;
+  font-weight: bold;
+  letter-spacing: 3px;
+  padding: 0.2em 1em 0.2em 1em;
+  border-radius: 0.5em;
+  outline: none;
+  background: #05F280;
+}
+
+.mat-form-field {
+  height:4.5em !important;
+  width:11em !important;
+}
+
+.choosen__type {
+  padding: 0.2em 1em;
+}
