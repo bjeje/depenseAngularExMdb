@@ -14,6 +14,10 @@ export class ActualAccountComponent implements OnInit {
   listSpentFixed: any;
   totalStay: any;
 
+  date = new Date();
+  firstDay = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
+  lastDay = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0);
+
   constructor(private incomeService: IncomeService, private spentService: SpentService) {}
 
   ngOnInit(): void {
@@ -25,7 +29,7 @@ export class ActualAccountComponent implements OnInit {
   }
 
   async getIncomeByDate():Promise<void> {
-    (await this.incomeService.getIncomeByDate("2021-05-01", "2021-05-30")).subscribe(data => {
+    (await this.incomeService.getIncomeByDate(this.firstDay, this.lastDay)).subscribe(data => {
       if (data) {
         this.listIncome = data;
         this.listIncome = this.listIncome.body;
@@ -61,7 +65,7 @@ export class ActualAccountComponent implements OnInit {
   }
 
   async getSpentVariableByDate():Promise<void> {
-    (await this.spentService.getSpentVariableByDate("2021-05-01", "2021-05-30" )).subscribe(data => {
+    (await this.spentService.getSpentVariableByDate(this.firstDay, this.lastDay )).subscribe(data => {
       if (data) {
         this.listSpentVariable = data;
         this.listSpentVariable = this.listSpentVariable.body;

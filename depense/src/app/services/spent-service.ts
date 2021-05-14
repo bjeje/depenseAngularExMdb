@@ -33,19 +33,19 @@ export class SpentService {
     return this.http.get(AppComponent.url + this.baseUrl + "/Fixed/" + `${owner}`);
   }
 
-  async getSpentFixedByDate(dateBegin: string, dateEnd: string) {
+  async getSpentFixedByDate(dateBegin: Date, dateEnd: Date) {
     let owner = this.User.getIdUserConnected();
     //return this.http.get(AppComponent.url + this.baseUrl + "/allByDate/:dateBegin/:dateEnd'");
     return this.http.get(AppComponent.url + this.baseUrl + "/FixedByDate/"+dateBegin+"/"+dateEnd+"/" + `${owner}`);
   }
 
-  async getSpentVariableByDate(dateBegin: string, dateEnd: string) {
+  async getSpentVariableByDate(dateBegin: Date, dateEnd: Date) {
     let owner = this.User.getIdUserConnected();
     //return this.http.get(AppComponent.url + this.baseUrl + "/allByDate/:dateBegin/:dateEnd'");
     return this.http.get(AppComponent.url + this.baseUrl + "/VariableByDate/"+dateBegin+"/"+dateEnd+"/"+ `${owner}`);
   }
 
-  async getSpentByDateAndCategory(dateBegin: string, dateEnd: string) {
+  async getSpentByDateAndCategory(dateBegin: Date, dateEnd: Date) {
     let owner = this.User.getIdUserConnected();
     return this.http.get(AppComponent.url + this.baseUrl + "/allByDateCat/"+dateBegin+"/"+dateEnd+"/"+ `${owner}`);
   }

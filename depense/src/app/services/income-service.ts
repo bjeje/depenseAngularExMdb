@@ -25,7 +25,7 @@ export class IncomeService {
     return this.http.get(AppComponent.url + this.baseUrl + "/nine" + "/" + `${owner}`);
   }
 
-  async getIncomeByDate(dateBegin: string, dateEnd: string) {
+  async getIncomeByDate(dateBegin: Date, dateEnd: Date) {
     let owner = this.User.getIdUserConnected();
     return this.http.get(AppComponent.url + this.baseUrl + "/allByDate/"+dateBegin+"/"+dateEnd+"/"+ `${owner}`);
   }
