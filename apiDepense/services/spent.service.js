@@ -13,6 +13,9 @@ module.exports.getSpent = async function () {
 module.exports.createSpent = async (req) => {
   try {
     let spent = new Spent({...req});
+    if(spent.sub_category === "Impots") {
+      spent.mentualize = true;
+    }
     let result = await spent.save();
     return result.toObject();
 
@@ -125,7 +128,7 @@ module.exports.getSpentFixed = async (owner) => {
       throw new Error(constants.spentMessage.SPENT_NOT_FOUND);
     }
     spent.forEach(spent =>{
-        if(spent.sub_category === "Impots") {
+        if(spent.mentualize === true) {
           let nbrToArround = Math.round((spent.value/12)*1000000)/1000000;
           totalSpentFixed += Math.round(nbrToArround * 100)/100;
         } else {
