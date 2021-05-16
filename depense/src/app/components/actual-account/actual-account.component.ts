@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IncomeService} from "../../services/income-service";
 import {SpentService} from "../../services/spent-service";
+import {EndMonthService} from "../../services/endMonth.service";
 
 @Component({
   selector: 'app-actual-account',
@@ -12,13 +13,16 @@ export class ActualAccountComponent implements OnInit {
   listIncome: any;
   listSpentVariable: any;
   listSpentFixed: any;
+  endMonthStay: any;
   totalStay: any;
 
   date = new Date();
+  dateOldFirstDay = this.setLastMonthFirstDay();
+  dateOldLastDay = this.setLastMonthLastDay();
   firstDay = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
   lastDay = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0);
 
-  constructor(private incomeService: IncomeService, private spentService: SpentService) {}
+  constructor(private incomeService: IncomeService, private spentService: SpentService, private endMonthService: EndMonthService) {}
 
   ngOnInit(): void {
     this.totalStay = [{total: null}];
@@ -26,6 +30,7 @@ export class ActualAccountComponent implements OnInit {
     //this.getSpentFixedByDate();
     this.getSpentFixed();
     this.getSpentVariableByDate();
+    this.getEndMonthByDate();
   }
 
   async getIncomeByDate():Promise<void> {
@@ -74,6 +79,33 @@ export class ActualAccountComponent implements OnInit {
         this.totalStay[0].total -= this.listSpentVariable.totalSpentVariable;
       }
     });
+  }
+
+  async getEndMonthByDate():Promise<void> {
+    (await this.endMonthService.getEndMonthByDate(this.dateOldFirstDay, this.dateOldLastDay)).subscribe(data => {
+      if (data) {
+        this.endMonthStay = data;
+        this.endMonthStay = this.endMonthStay.body;
+        console.log(this.endMonthStay);
+        if(this.endMonthStay[0].value) {
+          this.totalStay[0].total += this.endMonthStay[0].value;
+        }
+      }
+    })
+  }
+
+  setLastMonthFirstDay() {
+    let date = new Date();
+    date.setDate(1);
+    date.setMonth(this.date.getMonth()-1);
+    return date;
+  }
+
+  setLastMonthLastDay() {
+    let date = new Date();
+    date.setDate(1);
+    date = new Date(date.getFullYear(), date.getMonth(),0)
+    return date;
   }
 
 }

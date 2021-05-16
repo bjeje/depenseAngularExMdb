@@ -23,6 +23,11 @@ export class EndMonthService {
     return this.http.get(AppComponent.url + this.baseUrl + "/last/" + `${owner}`);
   }
 
+  async getEndMonthByDate(dateBegin: Date, dateEnd: Date) {
+    let owner = this.User.getIdUserConnected();
+    return this.http.get(AppComponent.url + this.baseUrl + "/allByDate/"+dateBegin+"/"+dateEnd+"/"+ `${owner}`);
+  }
+
   async getTwelveEndMonth() {
     let owner = this.User.getIdUserConnected();
     return this.http.get(AppComponent.url + this.baseUrl + "/twelve/"+ `${owner}`);
