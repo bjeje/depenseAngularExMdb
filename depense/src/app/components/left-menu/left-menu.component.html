@@ -7,12 +7,12 @@
   opened>
 
   <mat-list id="menus">
-    <div [ngClass]='appropriateClass' class="menus__sticky" >
+    <div class="menus__sticky" >
       <mat-card [ngClass]="isMenuOpen ? 'card__open' : 'card__close'">
           <img [src]="imgMen" class="photo" alt="photo">
         <div [ngClass]="isMenuOpen ? 'role__bottom' : 'role__normal'">
           <mat-card-title [ngClass]="isMenuOpen ? 'identity__name' : 'identity__name-close'"
-                          class="identity__name">Jérôme</mat-card-title>
+                          class="identity__name">{{firstname}}</mat-card-title>
 
             <mat-card-subtitle [ngClass]="isMenuOpen ? 'identity__role' : 'identity__role-close'"
                                class="identity__role">Admin</mat-card-subtitle>
@@ -58,7 +58,7 @@
         close
       </span>
 
-      <mat-list-item class="logout">
+      <mat-list-item class="logout" (click)="disconnect()">
         <a
           class="menu-item logout--style"
           mat-flat-button>

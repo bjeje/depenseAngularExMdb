@@ -93,7 +93,7 @@ module.exports.login = async (req, res) => {
         }
 
         if(await bcrypt.compare(users.password, user.password)) {
-            const token = generateAccessToken(user.login, false)
+            const token = generateAccessToken(user._id, user.firstname, false)
             /*console.log(token);*/
             return token;
         } else {
@@ -106,6 +106,6 @@ module.exports.login = async (req, res) => {
     }
 }
 
-function generateAccessToken(login, admin) {
-    return jwt.sign({login, admin}, env.TOKEN_SECRET, { expiresIn: '1800s' });
+function generateAccessToken(id, firstname, admin) {
+    return jwt.sign({id, firstname, admin}, env.TOKEN_SECRET, { expiresIn: '1800s' });
 }

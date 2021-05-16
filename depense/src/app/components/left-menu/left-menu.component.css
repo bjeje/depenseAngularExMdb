@@ -144,3 +144,8 @@
 .role__bottom {
   flex-direction: column;
 }
+/*----------------------- MEDIA QUERiES ---------------------*/
+
+@media (max-width: 1350px) {
+
+}

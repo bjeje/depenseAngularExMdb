@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const SpentSchema  = new mongoose.Schema({
     category: String,
     sub_category: String,
+    sub_catName: String,
+    owner: String,
+    type_account: { type: String, default: "Compte chèque" },
+    mentualize: { type: Boolean, default: false},
     value: Number,
     nbrUpdated: Number,
     oldRecords: [{
@@ -23,6 +27,6 @@ const SpentSchema  = new mongoose.Schema({
     }
 });
 
-const Spent = mongoose.model('spent', SpentSchema)
+const Spent = mongoose.model('Spent', SpentSchema)
 
 module.exports = Spent;

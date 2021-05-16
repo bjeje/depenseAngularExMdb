@@ -33,13 +33,13 @@
       </div>
     </mat-tab>
 
-    <mat-tab class="d-md-none">
+    <mat-tab class="tabOption">
       <ng-template mat-tab-label>
         <mat-icon class="example-tab-icon"></mat-icon>
         Dépense Fixe
       </ng-template>
       <span class="under__tableName"></span>
-      <div *ngFor="let spent of listSpentFixed">
+      <div  *ngFor="let spent of listSpentFixed">
         <div *ngIf="listSpentFixed" class="nineContent">
           <p class="date">{{spent.createdAt}}</p>
           <span class="separator">|</span>

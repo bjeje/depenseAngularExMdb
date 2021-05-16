@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {AppComponent} from '../app.component';
+import { UserService } from './user.services';
 
 @Injectable({
   providedIn: 'root'
@@ -10,32 +11,43 @@ export class SpentService {
 
   baseUrl = '/spent';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private User: UserService) { }
 
   async getSpent() {
     return this.http.get(AppComponent.url + this.baseUrl);
   }
 
   async getNineSpentFixed() {
-    return this.http.get(AppComponent.url + this.baseUrl + "/nineFixed");
+    let owner = this.User.getIdUserConnected();
+    return this.http.get(AppComponent.url + this.baseUrl + "/nineFixed/"+ `${owner}`);
   }
 
   async getNineSpentVariable() {
-    return this.http.get(AppComponent.url + this.baseUrl + "/nineVariable");
+    let owner = this.User.getIdUserConnected();
+    return this.http.get(AppComponent.url + this.baseUrl + "/nineVariable/" + `${owner}`);
   }
 
-  async getSpentFixedByDate(dateBegin: string, dateEnd: string) {
+  async getSpentFixed() {
+    let owner = this.User.getIdUserConnected();
     //return this.http.get(AppComponent.url + this.baseUrl + "/allByDate/:dateBegin/:dateEnd'");
-    return this.http.get(AppComponent.url + this.baseUrl + "/FixedByDate/"+dateBegin+"/"+dateEnd+"'");
+    return this.http.get(AppComponent.url + this.baseUrl + "/Fixed/" + `${owner}`);
   }
 
-  async getSpentVariableByDate(dateBegin: string, dateEnd: string) {
+  async getSpentFixedByDate(dateBegin: Date, dateEnd: Date) {
+    let owner = this.User.getIdUserConnected();
     //return this.http.get(AppComponent.url + this.baseUrl + "/allByDate/:dateBegin/:dateEnd'");
-    return this.http.get(AppComponent.url + this.baseUrl + "/VariableByDate/"+dateBegin+"/"+dateEnd+"'");
+    return this.http.get(AppComponent.url + this.baseUrl + "/FixedByDate/"+dateBegin+"/"+dateEnd+"/" + `${owner}`);
   }
 
-  async getSpentByDateAndCategory(dateBegin: string, dateEnd: string) {
-    return this.http.get(AppComponent.url + this.baseUrl + "/allByDateCat/"+dateBegin+"/"+dateEnd+"'");
+  async getSpentVariableByDate(dateBegin: Date, dateEnd: Date) {
+    let owner = this.User.getIdUserConnected();
+    //return this.http.get(AppComponent.url + this.baseUrl + "/allByDate/:dateBegin/:dateEnd'");
+    return this.http.get(AppComponent.url + this.baseUrl + "/VariableByDate/"+dateBegin+"/"+dateEnd+"/"+ `${owner}`);
+  }
+
+  async getSpentByDateAndCategory(dateBegin: Date, dateEnd: Date) {
+    let owner = this.User.getIdUserConnected();
+    return this.http.get(AppComponent.url + this.baseUrl + "/allByDateCat/"+dateBegin+"/"+dateEnd+"/"+ `${owner}`);
   }
 
   async getSpentById(id: number) {

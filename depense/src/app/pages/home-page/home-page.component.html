@@ -24,10 +24,12 @@
                       <button mat-menu-item (click)="changeCompoAdd('Variable')">Variable</button>
                       <button mat-menu-item (click)="changeCompoAdd('Fixed')">Fixe</button>
                       <button mat-menu-item (click)="changeCompoAdd('Income')">Recette</button>
+                      <button mat-menu-item (click)="changeCompoAdd('EndMonth')">Fin de mois</button>
                     </mat-menu>
                     <app-little-add-variable *ngIf="compoCreate === 'Variable'"></app-little-add-variable>
                     <app-little-add-fixed *ngIf="compoCreate === 'Fixed'"></app-little-add-fixed>
                     <app-little-add-income *ngIf="compoCreate === 'Income'"></app-little-add-income>
+                    <app-little-add-end-month *ngIf="compoCreate === 'EndMonth'"></app-little-add-end-month>
                   </div>
                 </div>
                 <div class="TotalBox col-md-5">

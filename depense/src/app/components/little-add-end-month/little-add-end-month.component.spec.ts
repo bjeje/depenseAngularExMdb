@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserComponent } from './user.component';
+import { LittleAddEndMonthComponent } from './little-add-end-month.component';
 
-describe('UserComponent', () => {
-  let component: UserComponent;
-  let fixture: ComponentFixture<UserComponent>;
+describe('LittleAddEndMonthComponent', () => {
+  let component: LittleAddEndMonthComponent;
+  let fixture: ComponentFixture<LittleAddEndMonthComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserComponent ]
+      declarations: [ LittleAddEndMonthComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserComponent);
+    fixture = TestBed.createComponent(LittleAddEndMonthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

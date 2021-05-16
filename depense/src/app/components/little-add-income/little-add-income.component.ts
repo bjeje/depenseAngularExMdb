@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IncomeService } from '../../services/income-service';
+import { UserService } from '../../services/user.services';
 
 
 interface Income {
@@ -26,12 +27,13 @@ export class LittleAddIncomeComponent implements OnInit {
     {value: 'Autre', viewValue: 'Autre'},
   ];
 
-  constructor(private formBuilder: FormBuilder, private Income: IncomeService) { }
+  constructor(private formBuilder: FormBuilder, private Income: IncomeService, private User:UserService) { }
 
   ngOnInit(): void {
   }
   async addCategory() {
     this.incomeForm.value.category = this.incomeForm.value.category.value;
+    this.incomeForm.value.owner = this.User.getIdUserConnected();
 
     (await this.Income.createIncome(this.incomeForm.value)).subscribe(
       (data: any) => {

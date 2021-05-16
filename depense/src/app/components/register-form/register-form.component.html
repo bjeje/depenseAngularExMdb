@@ -3,65 +3,73 @@
     <a class="" href="/login">Déjà inscrit?</a>
   </div>
   <form [formGroup]="registerForm" class="form__register" (ngSubmit)="signup()">
+
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Login</mat-label>
         <input formControlName="login" class="input__register" type="text" matInput placeholder="" required>
       </mat-form-field>
+      <p class="error--msg" *ngIf="checkError('login') === 'INVALID'">{{loginError}}
     </p>
+
+
+      <!--<mat-error </mat-error>-->
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Mot de passe</mat-label>
         <input formControlName="password" class="input__register" type="password" matInput placeholder="" required>
       </mat-form-field>
+      <p class="error--msg" *ngIf="checkError('password') === 'INVALID'">{{passwordError}}
     </p>
+
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Nom</mat-label>
         <input formControlName="name" class="input__register" type="text" matInput placeholder="">
       </mat-form-field>
+      <p class="error--msg" *ngIf="checkError('name') === 'INVALID'">{{nameError}}
     </p>
+
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Prénom</mat-label>
         <input formControlName="firstname" class="input__register" type="text" matInput placeholder="">
       </mat-form-field>
+      <p class="error--msg" *ngIf="checkError('firstname') === 'INVALID'">{{firstnameError}}
     </p>
-    <!--<mat-form-field class="register__input" appearance="outline">
-      <mat-label>Email</mat-label>
-      <input class="input__register" type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-             placeholder="Ex. pat@example.com">
-      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-        Please enter a valid email address
-      </mat-error>
-      <mat-error *ngIf="emailFormControl.hasError('required')">
-        Email is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>-->
+
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Email</mat-label>
         <input formControlName="email" class="input__register" type="email" matInput placeholder="" required>
       </mat-form-field>
+      <p class="error--msg" *ngIf="checkError('email') === 'INVALID'">{{emailError}}
     </p>
+
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Ville</mat-label>
         <input formControlName="city" class="input__register" type="text" matInput placeholder="">
       </mat-form-field>
+      <p class="error--msg" *ngIf="checkError('city') === 'INVALID'">{{cityError}}
     </p>
+
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Code postal</mat-label>
-        <input class="input__register" type="text" matInput placeholder="">
+        <input formControlName="postalCode" class="input__register" type="text" matInput placeholder="">
       </mat-form-field>
+      <p class="error--msg" *ngIf="checkError('postalCode') === 'INVALID'">{{postalCodeError}}
     </p>
+
     <p class="box__input_register">
       <mat-form-field class="register__input" appearance="outline">
         <mat-label>Date de naissance</mat-label>
         <input formControlName="birthdate" class="input__register" type="date" matInput placeholder="">
       </mat-form-field>
+      <p class="error--msg" *ngIf="checkError('birthdate') === 'INVALID'">{{birthdateError}}
     </p>
+
     <p class="form__submit">
       <button class="submit__btn" type="submit">Envoyer</button>
     </p>

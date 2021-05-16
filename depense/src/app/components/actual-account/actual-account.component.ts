@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IncomeService} from "../../services/income-service";
 import {SpentService} from "../../services/spent-service";
+import {EndMonthService} from "../../services/endMonth.service";
 
 @Component({
   selector: 'app-actual-account',
@@ -12,19 +13,28 @@ export class ActualAccountComponent implements OnInit {
   listIncome: any;
   listSpentVariable: any;
   listSpentFixed: any;
+  endMonthStay: any;
   totalStay: any;
 
-  constructor(private incomeService: IncomeService, private spentService: SpentService) {}
+  date = new Date();
+  dateOldFirstDay = this.setLastMonthFirstDay();
+  dateOldLastDay = this.setLastMonthLastDay();
+  firstDay = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
+  lastDay = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0);
+
+  constructor(private incomeService: IncomeService, private spentService: SpentService, private endMonthService: EndMonthService) {}
 
   ngOnInit(): void {
     this.totalStay = [{total: null}];
     this.getIncomeByDate();
-    this.getSpentFixedByDate();
+    //this.getSpentFixedByDate();
+    this.getSpentFixed();
     this.getSpentVariableByDate();
+    this.getEndMonthByDate();
   }
 
   async getIncomeByDate():Promise<void> {
-    (await this.incomeService.getIncomeByDate("2021-04-01", "2021-04-30")).subscribe(data => {
+    (await this.incomeService.getIncomeByDate(this.firstDay, this.lastDay)).subscribe(data => {
       if (data) {
         this.listIncome = data;
         this.listIncome = this.listIncome.body;
@@ -35,8 +45,20 @@ export class ActualAccountComponent implements OnInit {
     });
   }
 
-  async getSpentFixedByDate():Promise<void> {
+  /*async getSpentFixedByDate():Promise<void> {
     (await this.spentService.getSpentFixedByDate("2021-04-01", "2021-04-30")).subscribe(data => {
+      if (data) {
+        this.listSpentFixed = data;
+        this.listSpentFixed = this.listSpentFixed.body;
+        let nbrLastFixed = this.listSpentFixed.length;
+        this.listSpentFixed = this.listSpentFixed[nbrLastFixed-1];
+        this.totalStay[0].total -= this.listSpentFixed.totalSpentFixed;
+      }
+    });
+  }*/
+
+  async getSpentFixed():Promise<void> {
+    (await this.spentService.getSpentFixed()).subscribe(data => {
       if (data) {
         this.listSpentFixed = data;
         this.listSpentFixed = this.listSpentFixed.body;
@@ -48,7 +70,7 @@ export class ActualAccountComponent implements OnInit {
   }
 
   async getSpentVariableByDate():Promise<void> {
-    (await this.spentService.getSpentVariableByDate("2021-04-01", "2021-04-30" )).subscribe(data => {
+    (await this.spentService.getSpentVariableByDate(this.firstDay, this.lastDay )).subscribe(data => {
       if (data) {
         this.listSpentVariable = data;
         this.listSpentVariable = this.listSpentVariable.body;
@@ -57,6 +79,33 @@ export class ActualAccountComponent implements OnInit {
         this.totalStay[0].total -= this.listSpentVariable.totalSpentVariable;
       }
     });
+  }
+
+  async getEndMonthByDate():Promise<void> {
+    (await this.endMonthService.getEndMonthByDate(this.dateOldFirstDay, this.dateOldLastDay)).subscribe(data => {
+      if (data) {
+        this.endMonthStay = data;
+        this.endMonthStay = this.endMonthStay.body;
+        console.log(this.endMonthStay);
+        if(this.endMonthStay[0].value) {
+          this.totalStay[0].total += this.endMonthStay[0].value;
+        }
+      }
+    })
+  }
+
+  setLastMonthFirstDay() {
+    let date = new Date();
+    date.setDate(1);
+    date.setMonth(this.date.getMonth()-1);
+    return date;
+  }
+
+  setLastMonthLastDay() {
+    let date = new Date();
+    date.setDate(1);
+    date = new Date(date.getFullYear(), date.getMonth(),0)
+    return date;
   }
 
 }
