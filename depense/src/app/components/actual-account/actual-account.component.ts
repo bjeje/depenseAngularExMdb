@@ -86,7 +86,6 @@ export class ActualAccountComponent implements OnInit {
       if (data) {
         this.endMonthStay = data;
         this.endMonthStay = this.endMonthStay.body;
-        console.log(this.endMonthStay);
         if(this.endMonthStay[0].value) {
           this.totalStay[0].total += this.endMonthStay[0].value;
         }

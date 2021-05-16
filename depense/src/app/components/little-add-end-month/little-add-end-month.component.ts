@@ -32,12 +32,10 @@ export class LittleAddEndMonthComponent implements OnInit {
   async addCategory() {
     this.endMonthForm.value.type_account = this.endMonthForm.value.type_account.value;
     this.endMonthForm.value.owner = this.User.getIdUserConnected();
-    console.log(this.endMonthForm.value);
 
     (await this.EndMonth.createEndMonth(this.endMonthForm.value)).subscribe(
       (data: any) => {
         if(data) {
-          console.log(data);
           this.resetForm();
           window.location.reload()
         }

@@ -42,8 +42,6 @@ export class TotalBoxComponent implements OnInit {
       if (data) {
         this.listSpentFixed = data;
 
-        //console.log(this.listSpentFixed.body.totalSpentFixed);
-
         this.listSpentFixed = this.listSpentFixed.body;
       }
     });

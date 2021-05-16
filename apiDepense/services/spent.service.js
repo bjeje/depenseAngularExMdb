@@ -129,8 +129,11 @@ module.exports.getSpentFixed = async (owner) => {
     }
     spent.forEach(spent =>{
         if(spent.mentualize === true) {
-          let nbrToArround = Math.round((spent.value/12)*1000000)/1000000;
-          totalSpentFixed += Math.round(nbrToArround * 100)/100;
+          let nbrToArround = spent.value/12;
+          nbrToArround = Math.round(nbrToArround * 1000)/1000;
+          nbrToArround = nbrToArround.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+
+          totalSpentFixed += Number(nbrToArround);
         } else {
           totalSpentFixed += spent.value;
         }
