@@ -24,3 +24,11 @@
 .choosen__type {
   padding: 0.2em 1em;
 }
+
+.mentualize {
+  display: flex;
+}
+
+.mentualize--text {
+  font-style: italic;
+}
