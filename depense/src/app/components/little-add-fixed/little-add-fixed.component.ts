@@ -15,6 +15,9 @@ interface Spent {
 })
 export class LittleAddFixedComponent implements OnInit {
 
+  mentualizeIcon = "event_busy";
+  mentualize = false;
+
   spentForm = this.formBuilder.group({
     value: ['', Validators.required],
     category: ["spentFixed"],
@@ -41,6 +44,7 @@ export class LittleAddFixedComponent implements OnInit {
   async addCategory() {
     this.spentForm.value.sub_category = this.spentForm.value.sub_category.value;
     this.spentForm.value.owner = this.User.getIdUserConnected();
+    this.spentForm.value.mentualize = this.mentualize;
 
     (await this.Spent.createSpent(this.spentForm.value)).subscribe(
       (data: any) => {
@@ -55,5 +59,11 @@ export class LittleAddFixedComponent implements OnInit {
 
   resetForm() {
     this.spentForm.reset();
+  }
+
+  changeTypeMentualize() {
+
+    this.mentualize === false ? this.mentualize = true : this.mentualize = false;
+    this.mentualizeIcon === "event_busy" ? this.mentualizeIcon = "event_available" : this.mentualizeIcon = "event_busy";
   }
 }

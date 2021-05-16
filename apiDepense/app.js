@@ -23,10 +23,12 @@ app.use(express.urlencoded({ extended: true }))
 const spentRouter = require('./routes/spent.routes');
 const userRouter = require('./routes/user.routes');
 const incomeRouter = require('./routes/income.routes');
+const endMonthRouter = require('./routes/endMonth.routes');
 
 app.use('/spent', auth.checkTokenMiddleware, spentRouter);
 app.use('/user', userRouter);
 app.use('/income', auth.checkTokenMiddleware, incomeRouter);
+app.use('/endMonth', auth.checkTokenMiddleware, endMonthRouter);
 
 app.set('view engine', 'pug');
 

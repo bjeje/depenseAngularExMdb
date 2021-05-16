@@ -16,9 +16,20 @@
         </mat-select>
       </mat-form-field>
     </div>
+    <div class="row">
 
-    <p class="form__submit">
-      <button class="submit__add" [disabled]="spentForm.invalid">ENVOYER</button>
-    </p>
+      <div class="mentualize" (click)="changeTypeMentualize()">
+        <span class="material-icons icon--stats">
+       {{mentualizeIcon}}
+        </span>
+        <p class="mentualize--text"> mentualiser</p>
+      </div>
+
+
+      <p class="form__submit">
+        <button class="submit__add" [ngStyle]="{ marginLeft: '58%'}" [disabled]="spentForm.invalid">ENVOYER</button>
+      </p>
+    </div>
+
   </form>
 </div>
