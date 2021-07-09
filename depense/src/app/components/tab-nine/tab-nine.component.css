@@ -50,6 +50,10 @@
   top: 0.8em;
 }
 
+.tabOption {
+  display: block;
+}
+
 @media (max-width: 1350px) {
   .tabOption {
     display: none;

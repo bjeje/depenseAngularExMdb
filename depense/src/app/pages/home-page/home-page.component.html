@@ -10,13 +10,13 @@
             <!-- ADD MARGIN OR REDUCE IF MENU IS OPEN OR CLOSE FOR CENTER CONTENT -->
             <div [ngClass]="isMenuOpen ? 'content__page--open' : 'content__page--close'">
               <div class="row">
-                <div class="col-md-7">
+                <div class="col-lg-7">
                   <div class="main__view">
                     <p class="title__page">Compte</p>
                     <app-tab-nine></app-tab-nine>
                   </div>
                 </div>
-                <div class="col-md-5 box__actual-account">
+                <div class="col-lg-5 box__actual-account">
                   <app-actual-account></app-actual-account>
                   <div class="box__add">
                     <i class="material-icons icon-choose" mat-button [matMenuTriggerFor]="menu">more_horiz</i>
@@ -32,10 +32,10 @@
                     <app-little-add-end-month *ngIf="compoCreate === 'EndMonth'"></app-little-add-end-month>
                   </div>
                 </div>
-                <div class="TotalBox col-md-5">
+                <div class="TotalBox col-lg-5">
                   <app-total-box></app-total-box>
                 </div>
-                <div class="histogram col-md-7">
+                <div class="histogram col-lg-7">
                   <app-home-histogram></app-home-histogram>
                 </div>
               </div>

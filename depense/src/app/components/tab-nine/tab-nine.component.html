@@ -33,21 +33,23 @@
       </div>
     </mat-tab>
 
-    <mat-tab class="tabOption">
-      <ng-template mat-tab-label>
-        <mat-icon class="example-tab-icon"></mat-icon>
-        Dépense Fixe
-      </ng-template>
-      <span class="under__tableName"></span>
-      <div  *ngFor="let spent of listSpentFixed">
-        <div *ngIf="listSpentFixed" class="nineContent">
-          <p class="date">{{spent.createdAt}}</p>
-          <span class="separator">|</span>
-          <p class="category">{{spent.sub_category}}</p>
-          <p class="valueSpent">{{spent.value}}</p>
+    <div class="d-sm-none d-lg-block">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon"></mat-icon>
+          Dépense Fixe
+        </ng-template>
+        <span class="under__tableName"></span>
+        <div  *ngFor="let spent of listSpentFixed">
+          <div *ngIf="listSpentFixed" class="nineContent">
+            <p class="date">{{spent.createdAt}}</p>
+            <span class="separator">|</span>
+            <p class="category">{{spent.sub_category}}</p>
+            <p class="valueSpent">{{spent.value}}</p>
+          </div>
         </div>
-      </div>
-    </mat-tab>
+      </mat-tab>
+    </div>
   </mat-tab-group>
   <i class="far fa-edit edit-menu"></i>
 </div>
